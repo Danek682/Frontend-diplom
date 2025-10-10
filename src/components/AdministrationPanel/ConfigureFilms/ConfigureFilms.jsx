@@ -5,7 +5,27 @@ import "./ConfigureFilms.css"
 Modal .setAppElement("#root");
 import { ModalWindow } from "../ConfigureFilms/ModalWindow";
 export function ConfigureFilms () {
-    const [visible, setVisible] = useState(false)
+    const [visible, setVisible] = useState(false);
+    const [films, setFilms] = useState([]);
+
+    function deleteFilm(filmId) {
+        axios.delete(`https://shfe-diplom.neto-server.ru/film/${filmId}`)
+        .then(response => {
+            console.log(response.data)
+            setFilms(response.data.result.films)
+        }).catch(error => (
+            console.log(error)
+        ))
+    }
+
+    useEffect(()=> {
+        if (!visible) {
+            axios.get("https://shfe-diplom.neto-server.ru/alldata").then(response => {
+                setFilms(response.data.result.films)
+            })
+        }
+    },[visible])
+
     return (
         <div className="configureFilms__content">
             <div className="configureFilms__addFilms">
@@ -27,11 +47,26 @@ export function ConfigureFilms () {
                         }}
                 closeTimeoutMS={300} // время для анимации закрытия
                 > 
-                    <ModalWindow visible = {visible} setVisible = {setVisible}/>
+                    <ModalWindow visible = {visible} setVisible = {setVisible} setFilms = {setFilms}/>
                 </Modal >
             </div>
-            <div>
-                
+            <div className="films">
+                <div className="films-wrapper">
+                    {films.map ((h,index)=> (
+                        <div className="filmBox" key={index}>
+                            <img src={h.film_poster} alt="постер фильма" className="filmPoster"/>
+                            <div className="filmBox-content">
+                            <span className="filmBox-content-filmName">{h.film_name}</span>
+                            <span className="filmBox-content-filmDuration">{`${h.film_duration} минут`}</span>
+                            <button className="deleteButton" onClick={()=> {
+                                deleteFilm(h.id)
+                            }}>
+                                <img className="bashImage" src="/bash.png" alt="Удалить"/>
+                            </button>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     )
