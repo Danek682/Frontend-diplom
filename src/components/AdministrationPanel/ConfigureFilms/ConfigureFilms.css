@@ -1,0 +1,34 @@
+.configureFilms__content {
+width: 962px;
+height: auto;
+background: rgb(231, 230, 230); 
+}
+
+.configureFilms__addFilms {
+max-width: 816px;
+height: 57px;
+display: flex;
+padding: 42px 0px 50px 104px;
+}
+
+.configureFilms__addFilms-button {
+width: 194px;
+height: 40px;
+border-radius: 3px;
+box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.24), 0px 0px 3px 0px rgba(0, 0, 0, 0.12);
+background: rgba(22, 166, 175, 1);
+padding: 11.2px 32px 11.9px 32px;
+color: rgba(255, 255, 255, 1);
+font-family: 'Roboto', sans-serif;
+font-size: 14px;
+font-weight: 500;
+line-height: 16px;
+text-align: center;
+text-transform: uppercase;
+border: none;
+cursor: pointer;
+}
+
+.configureFilms__addFilms-button:hover {
+    transform: scale(1.05);
+}

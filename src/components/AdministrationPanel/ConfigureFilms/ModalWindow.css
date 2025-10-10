@@ -1,0 +1,216 @@
+
+.addFilmModal {
+max-width: 768px;
+height: 512px;
+background: rgba(234, 233, 235, 0.95);
+}
+
+.addFilmModal-header {
+width: 768px;
+height: 57px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 16px 42px 14px 42px;
+background: rgba(99, 83, 108, 1);
+}
+
+.addFilmModal-heading{
+color: rgba(255, 255, 255, 1);
+font-family: 'Roboto', sans-serif;
+font-size: 22px;
+font-weight: 700;
+line-height: 25px;
+letter-spacing: 0%;
+text-align: left;
+text-transform: uppercase;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.modalOverlay_after-open {
+  background-color: rgba(0, 0, 0, 0.6)
+}
+
+.modalOverlay_before-close {
+  background-color: rgba(0, 0, 0, 0)
+}
+
+.modalContent {
+  transform: translateY(-40px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.modalContent_after-open {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modalContent_before-close {
+  transform: translateY(-40px);
+  opacity: 0;
+}
+
+.addFilmModal-buttonClose{
+   padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.addFilmModal-buttonClose-img {
+width: 22px;
+height: 22px;
+}
+
+.addFilmModal-buttonClose-img:hover {
+  transform: scale(1.05);
+}
+
+.addFilm-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px ;
+}
+
+.addFilm-form-filmName {
+  display: flex;
+  flex-direction: column;
+  padding: 34px 9px 5px 9px;
+}
+
+.addFilm-form-filmDuration,
+.addFilm-form-filmDescription,
+.addFilm-form-filmOrigin {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 9px 0px 9px;
+}
+
+.addFilm-form-filmName-labbel,
+.addFilm-form-filmDuration-label,
+.addFilm-form-filmDescription-label,
+.addFilm-form-filmOrigin-label {
+color: rgba(132, 132, 132, 1);
+font-family: 'Roboto', sans-serif;
+font-size: 12px;
+font-weight: 400;
+line-height: 14px;
+letter-spacing: 0%;
+text-align: left;
+}
+
+.addFilm-form-filmName-input,
+.addFilm-form-filmDuration-input,
+.addFilm-form-filmOrigin-input {
+box-sizing: border-box;
+border: 1px solid rgba(183, 183, 183, 1);
+background: rgba(255, 255, 255, 1);
+padding: 8px;
+height: 35px;
+color: rgba(117, 117, 117, 1);
+font-family: 'Roboto',sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: left;
+}
+
+.addFilm-form-filmDescription-input {
+box-sizing: border-box;
+border: 1px solid rgba(183, 183, 183, 1);
+background: rgba(255, 255, 255, 1);
+padding: 8px;
+height: 80px;
+color: rgba(117, 117, 117, 1);
+font-family: 'Roboto',sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: left;
+overflow: scroll;
+resize: none;
+overflow: auto;
+}
+
+.addFilm-form-buttonCancel{
+width: 139px;
+height: 40px;
+padding: 11.2px 31.24px 11.9px 31.56px;
+border-radius: 3px;
+box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.24),0px 0px 3px 0px rgba(0, 0, 0, 0.12);
+background: rgba(255, 255, 255, 1);
+color: rgba(99, 83, 108, 1);
+font-family: 'Roboto', sans-serif;
+font-size: 14px;
+font-weight: 500;
+line-height: 16px;
+text-align: center;
+text-transform: uppercase;
+border: none;
+cursor: pointer;  
+}
+
+.addFilm-form-buttons {
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.addFilm-form-buttonAddFilm,
+.addFilm-form-DowloadPoster-label{
+width: 200px;
+height: 40px;
+padding: 11.2px 31.24px 11.9px 31.56px;
+border-radius: 3px;
+border-radius: 3px;
+box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.24),0px 0px 3px 0px rgba(0, 0, 0, 0.12);
+background: rgba(22, 166, 175, 1);
+color: rgba(255, 255, 255, 1);
+font-family: 'Roboto', sans-serif;
+font-size: 14px;
+font-weight: 500;
+line-height: 16px;
+text-align: center;
+text-transform: uppercase;
+border: none;
+cursor: pointer;  
+}
+
+.addFilm-form-buttonCancel:hover,
+.addFilm-form-buttonDowloadPoster:hover,
+.addFilm-form-buttonAddFilm:hover,
+.configureFilms__addFilms-button:hover {
+  transform: scale(1.05);
+  transition: transform 0.15s ease;
+}
+
+.succesUpload-default {
+  display: none;
+}
+
+.succesUpload {
+display: flex;
+align-items: center;
+justify-content: center;
+color: rgb(116, 40, 27);
+font-family:'Roboto', sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 18px;
+text-align: left;
+}
