@@ -92,3 +92,31 @@ width: 29px;
   background-color: transparent;
   cursor: pointer;
 }
+
+.halls {
+  padding: 20px 42px 0px 104px;
+}
+
+.halls-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.halls-block-name {
+  padding-left: 35px;
+  color: rgba(0, 0, 0, 1);
+
+font-family: 'Roboto',sans-serif;
+font-size: 16px;
+font-weight: 500;
+line-height: 18px;
+text-align: left;
+text-transform: uppercase;
+}
+
+.hallls-block-timeline {
+width: 722px;
+height: 62px;
+border: 1px solid rgba(132, 132, 132, 1);
+  margin: 0px 0px 35px 35px;
+}

@@ -51,7 +51,7 @@ export function Signin () {
         <header className="header">
            <div className="header__logos">
                 <div className="header__logos_admin">
-                    <img src="/gotocinema.png" alt="Логотип кинотеатра" />
+                    <img src="gotocinema.png" alt="Логотип кинотеатра" />
                     <span className="header__adminspan">Администраторская</span>
                 </div>
                 <  Link to = "/"><button className="backButton"> Вернуться на главную</button></Link>

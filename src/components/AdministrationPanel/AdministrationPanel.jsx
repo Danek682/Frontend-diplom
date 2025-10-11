@@ -9,10 +9,10 @@ import { ConfigureFilms } from "../AdministrationPanel/ConfigureFilms/ConfigureF
 export function AdministrationPanel () {
     const [hallActive, setHallActive] = useState("hallManagment__content_default")  //выбранный зал
     const [hall, setHalls] = useState([]) //Залы
-    const [rowImagehallManagment, setRowImagehallManagment] = useState("/arrow.png")//стрелка для переключения
-    const [rowImageHallConfigure, setRowImageHallConfigure] = useState("/arrow.png")
-    const [rowImagePriceConfigure, setRowImagePriceConfigure] = useState("/arrow.png") 
-    const [rowImageFilmsConfigure, setRowImageFilmsConfigure] = useState("/arrow.png") 
+    const [rowImagehallManagment, setRowImagehallManagment] = useState("arrow.png")//стрелка для переключения
+    const [rowImageHallConfigure, setRowImageHallConfigure] = useState("arrow.png")
+    const [rowImagePriceConfigure, setRowImagePriceConfigure] = useState("arrow.png") 
+    const [rowImageFilmsConfigure, setRowImageFilmsConfigure] = useState("arrow.png") 
     const [hallConfigure, setHallConfigure] = useState("hallConfigure__content-default") //блок с конфигурацией залов
     const [priceConfigureWindow, setPriceConfigureWindow ] = useState("configurePrice__main-default")// Блок с утановкой цен залов
     const [filmsConfigureWindow, setFilmsConfigureWindow] = useState("configureFilms__main-default")// блок с фильмами и сеансами 
@@ -22,42 +22,42 @@ export function AdministrationPanel () {
     function onClickHallManagment () {
         if (hallActive === "hallManagment__content_default") {
             setHallActive("hallManagment__content")
-            setRowImagehallManagment("/arrowUp.png")
+            setRowImagehallManagment("arrowUp.png")
         } else {
             setHallActive("hallManagment__content_default")
-            setRowImagehallManagment("/arrow.png")
+            setRowImagehallManagment("arrow.png")
         }
     }
 
     function onClickHallConfigure () {
         if (hallConfigure === "hallConfigure__content-default") {
             setHallConfigure("hallConfigure__content")
-            setRowImageHallConfigure("/arrowUp.png")
+            setRowImageHallConfigure("arrowUp.png")
         } else {
             setHallConfigure("hallConfigure__content-default")
-            setRowImageHallConfigure("/arrow.png")
+            setRowImageHallConfigure("arrow.png")
         }
     }
     
     function onClickPriceConfigure () {
         if (priceConfigureWindow === "configurePrice__main-default") {
             setPriceConfigureWindow("configurePrice__main")
-            setRowImagePriceConfigure("/arrowUp.png")
+            setRowImagePriceConfigure("arrowUp.png")
         }
         else {
             setPriceConfigureWindow("configurePrice__main-default")
-            setRowImagePriceConfigure("/arrow.png")
+            setRowImagePriceConfigure("arrow.png")
         }
     }
 
     function onClickFilmsConfigure () {
         if (filmsConfigureWindow === "configureFilms__main-default") {
             setFilmsConfigureWindow("configureFilms__main")
-            setRowImageFilmsConfigure("/arrowUp.png")
+            setRowImageFilmsConfigure("arrowUp.png")
         }
         else {
             setFilmsConfigureWindow("configureFilms__main-default")
-            setRowImageFilmsConfigure("/arrow.png")
+            setRowImageFilmsConfigure("arrow.png")
         }
     }
 
