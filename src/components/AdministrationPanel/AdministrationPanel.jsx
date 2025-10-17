@@ -4,6 +4,7 @@ import "./administrationPanel.css"
 import axios from "axios";
 import { ConfigurePrice } from "../AdministrationPanel/ConfigurePrice/ConfigurePrice";
 import { ConfigureFilms } from "../AdministrationPanel/ConfigureFilms/ConfigureFilms";
+import { OpenSales } from "./OpenSales/OpenSales";
 // import 'animate.css';
 
 export function AdministrationPanel () {
@@ -13,11 +14,11 @@ export function AdministrationPanel () {
     const [rowImageHallConfigure, setRowImageHallConfigure] = useState("arrow.png")
     const [rowImagePriceConfigure, setRowImagePriceConfigure] = useState("arrow.png") 
     const [rowImageFilmsConfigure, setRowImageFilmsConfigure] = useState("arrow.png") 
+    const [rowImageSalesWIndow, setRowImageSalesWIndow] = useState("arrow.png")
     const [hallConfigure, setHallConfigure] = useState("hallConfigure__content-default") //блок с конфигурацией залов
     const [priceConfigureWindow, setPriceConfigureWindow ] = useState("configurePrice__main-default")// Блок с утановкой цен залов
     const [filmsConfigureWindow, setFilmsConfigureWindow] = useState("configureFilms__main-default")// блок с фильмами и сеансами 
-    // const [popup, setPopup] = useState("PopupFIlms-none") 
-    const [popup, setPopup] = useState("modal-none")
+    const [openSalesWindow, setOpenSalesWindow] = useState("openSales__main-default")
 
     function onClickHallManagment () {
         if (hallActive === "hallManagment__content_default") {
@@ -60,6 +61,17 @@ export function AdministrationPanel () {
             setRowImageFilmsConfigure("arrow.png")
         }
     }
+
+    function onClickOpenSales () {
+        if(openSalesWindow === "openSales__main-default") {
+            setOpenSalesWindow("openSales__main")
+            setRowImageSalesWIndow("arrowUp.png")
+        }
+        else {
+            setOpenSalesWindow("openSales__main-default")
+            setRowImageSalesWIndow("arrow.png")
+        }
+    } 
 
     useEffect(()=> {
         axios.get("https://shfe-diplom.neto-server.ru/alldata").then(response => {
@@ -304,8 +316,20 @@ export function AdministrationPanel () {
                     </button>
                 </div>
                 <div className={filmsConfigureWindow}>
-                   <ConfigureFilms />
+                   <ConfigureFilms /> 
                 </div>
+                
+                <div className="openSales__header">
+                    <span className="openSales__heading">Открыть продажи</span>
+                    <button className="rowButton" onClick={onClickOpenSales}>
+                        <img src={rowImageSalesWIndow} alt="стрелка" className="arrow" />
+                    </button>
+                </div>
+                 
+                <div className={openSalesWindow}>
+                        <OpenSales/>
+                </div>
+
                 </div>
             </main>
         </div>

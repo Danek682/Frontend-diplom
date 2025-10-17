@@ -141,7 +141,7 @@ position: relative;
 .hallls-block-timeline-filmName {
   display: flex;
   justify-content: center;
-max-width: 72px;
+max-width: 130px;
 box-sizing: border-box;
 border: 1px solid rgba(0, 0, 0, 0.3);
 background-color: #dbd5d5;

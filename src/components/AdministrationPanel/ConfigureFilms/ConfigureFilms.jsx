@@ -141,7 +141,7 @@ export function ConfigureFilms () {
                                     e.preventDefault()
                                     const film = result.films.find((f)=> f.id === seanceDraggble.seance_filmid)
                                     const filmInSeance = film?.film_name;
-                                    const seanceId = seanceDraggble.id
+                                    const seanceId = seanceDraggble.id;
                                     handleDropSeance(seanceDraggble,filmInSeance,seanceId)
                                 }}
                                 >

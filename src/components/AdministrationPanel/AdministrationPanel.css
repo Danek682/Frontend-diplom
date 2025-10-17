@@ -98,7 +98,8 @@ margin: 0 auto;
 
 .hallManagment__header,
 .configurePrice__header,
-.configureFilms__header{
+.configureFilms__header,
+.openSales__header{
 width: 962px;
 height: 95px;
 display: flex;
@@ -112,7 +113,8 @@ background: rgba(99, 83, 108, 1);
 .hallManagment__heading,
 .configurePrice__heading,
 .configureFilms__heading,
-.modal__main-heading {
+.modal__main-heading,
+.openSales__heading {
 color: rgba(255, 255, 255, 1);
 font-family: 'Roboto', sans-serif;
 font-size: 22px;
@@ -147,14 +149,16 @@ cursor: pointer;
 
 .hallManagment__content_default,
 .configurePrice__main-default,
-.configureFilms__main-default {
+.configureFilms__main-default,
+.openSales__main-default {
   animation: fadeOut 0.3s cubic-bezier(0,.7,1,.99) forwards;
   background: rgb(231, 230, 230); 
 }
 
 .hallManagment__content,
 .configurePrice__main,
-.configureFilms__main {
+.configureFilms__main,
+.openSales__main {
 display: flex;
 flex-direction: column;
 background: rgb(231, 230, 230); 

@@ -34,7 +34,6 @@ export function ConfigurePrice (props) {
             <div className="configurePrice__content-hallsButtons">
                 {props.hall.map((h,index)=> (
                     <button key={index} onClick={() => {setActiveHall(h.id)
-                        // console.log(h.id)
                     }}
                      className={activeHall === h.id ? "hallPrice__content_hall-isActive" : "hallPrice__content_hall"}
                      >{h.hall_name}</button>
