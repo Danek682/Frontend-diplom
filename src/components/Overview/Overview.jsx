@@ -15,6 +15,8 @@ export function OverView (props) {
 
     const [valueDate, setValueDate] = useState("") 
 
+    const activeDate = dates.find(d => d.value === valueDate)
+
     return (
         <div className='app'>
           <header className='header'>
@@ -29,8 +31,7 @@ export function OverView (props) {
           </header>
           <nav className="nav">
         {dates.map((date,index)=> (
-            <main key={index}>
-                <div className='nav-dates'>
+                <div className='nav-dates' key={index}>
                 {date.status === "holiday" ? 
 
                 <button className={`nav-dates-button--holiday ${valueDate === date.value ? "nav-dates-button--holiday-active" : "" }`} 
@@ -42,11 +43,33 @@ export function OverView (props) {
                     setValueDate(date.value)
                 }}>{date.labelDate}</button>}
             </div> 
-
-            </main>
-            
         ))}
         </nav>
+        <main className='seances'>
+            {activeDate ? 
+                <div className='seance-wrapper'>{
+                    props.result?.films.map((films,index)=> (
+                        <div className='seance-box' key={index}>
+                            <div className='seance-box__info'>
+                                <img src={films.film_poster} alt="Постер фильма" className='filmPosters'/>
+                                <div className='seance-box__info-descriptions'>
+                                    <h2 className='seance-box__info-descriptions-filmName'>{films.film_name}</h2>
+                                    <p className='seance-box__info-descriptions-filmDescription'>{films.film_description}</p>
+                                    <div className='seance-box__info-descriptions-durationAndOrigins'>
+                                        <span className='seance-box__info-descriptions-duration'>
+                                            {`${films.film_duration} минут`}
+                                        </span>
+                                        <span className='seance-box__info-descriptions-duration-origin'>
+                                            {`${films.film_origin}`}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+             : ""}
+        </main>
         </div>       
     )
 }
