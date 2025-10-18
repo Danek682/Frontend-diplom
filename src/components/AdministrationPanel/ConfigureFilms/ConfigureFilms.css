@@ -39,6 +39,7 @@ display: flex;
 gap: 15px ;
 flex-wrap: wrap;
 margin: 15px 0px 15px 104px;
+
 }
 
 .filmBox {
@@ -48,6 +49,7 @@ height: 52px;
 background-color: #dbd5d5;
 border: 1px solid #b4aeae;
 position: relative;
+cursor: grab;
 }
 
 .filmBox-content {
@@ -93,6 +95,10 @@ width: 29px;
   cursor: pointer;
 }
 
+.deleteButton:hover{
+  transform: scale(1.06);
+}
+
 .halls {
   padding: 20px 42px 0px 104px;
 }
@@ -132,8 +138,7 @@ justify-content: center;
 position: relative;
 }
 
-.hallls-block-timeline-filmName:hover,
-.filmBox:hover {
+.hallls-block-timeline-filmName:hover {
   cursor: pointer;
   transform: scale(1.03);
 }

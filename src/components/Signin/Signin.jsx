@@ -75,10 +75,10 @@ export function Signin () {
                             setPassword(e.target.value)
                         }}/>
                     </div>
+                    <span className={`${nameClass} ${nameClassACtive}`}>{value}</span>
                     <div className="send__button-container">
                         <button className="send__button">Авторизоваться</button>
                     </div>
-                    <span className={`${nameClass} ${nameClassACtive}`}>{value}</span>
                 </form>
             </div>
         </main>

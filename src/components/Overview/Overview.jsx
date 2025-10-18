@@ -1,10 +1,20 @@
-import { NavLink, Link, useParams } from 'react-router-dom'
-import { FilmDays } from '../FilmDays/FIlmDays'
+import { useState } from 'react'
 import './Overview.css'
-export function OverView () {
-    function activeDate ({isActive}) {
-  return isActive ? "nav__link-active" : "nav__link-date"
-}
+import { Link } from "react-router-dom"
+export function OverView (props) {
+
+    const dates = [
+        {labelDate:"6, пн", value:"2025-10-06", status: "weekday"},
+        {labelDate:"7, вт", value:"2025-10-07", status: "weekday"},
+        {labelDate:"8, ср", value:"2025-10-08", status: "weekday"},
+        {labelDate:"9, чт", value:"2025-10-09", status: "weekday"},
+        {labelDate:"10, пт", value:"2025-10-10", status: "weekday"},
+        {labelDate:"11, сб", value:"2025-10-11", status: "holiday"},
+        {labelDate:"12, вс", value:"2025-10-12", status: "holiday"}
+    ]
+
+    const [valueDate, setValueDate] = useState("") 
+
     return (
         <div className='app'>
           <header className='header'>
@@ -18,51 +28,25 @@ export function OverView () {
             </div>
           </header>
           <nav className="nav">
-            <NavLink to = "/today" className={activeDate} >
-                <div className='nav__link'>
-                    <span className='nav__link-date-span'>Сегодня</span>
-                    <span className='nav__link-date-span'>Пн, 31</span>
-                </div>
-            </NavLink>
-            <NavLink to = "/1" className={activeDate} >
-                <div className='nav__link'>
-                    <span className='nav__link-date-span'>Вт,</span>
-                    <span className='nav__link-date-span'>1</span>
-                </div>
-            </NavLink>
-            <NavLink to = "/2" className={activeDate} >
-                <div className='nav__link'>
-                    <span className='nav__link-date-span'>Ср,</span>
-                    <span className='nav__link-date-span'>2</span>
-                </div>
-            </NavLink>
-            <NavLink to = "/3" className={activeDate} >
-                <div className='nav__link'>
-                    <span className='nav__link-date-span'>Чт,</span>
-                    <span className='nav__link-date-span'>3</span>
-                </div>
-            </NavLink>
-             <NavLink to = "/4" className={activeDate} >
-                <div className='nav__link'>
-                    <span className='nav__link-date-span'>Пт,</span>
-                    <span className='nav__link-date-span'>4</span>
-                </div>
-            </NavLink>
-             <NavLink to = {`/5`} className={activeDate} >
-                <div className='nav__link-weekend'>
-                    <span className='nav__link-date-span'>Сб,</span>
-                    <span className='nav__link-date-span'>5</span>
-                </div>
-            </NavLink>
-            <NavLink to = "/6" className={activeDate} >
-                <div className='nav__link-weekend'>
-                    <span className='nav__link-date-span'>Вс,</span>
-                    <span className='nav__link-date-span'>6</span>
-                </div>
-            </NavLink>
+        {dates.map((date,index)=> (
+            <main key={index}>
+                <div className='nav-dates'>
+                {date.status === "holiday" ? 
+
+                <button className={`nav-dates-button--holiday ${valueDate === date.value ? "nav-dates-button--holiday-active" : "" }`} 
+                onClick={() => {
+                setValueDate(date.value)
+                }}>{date.labelDate}</button> 
+
+                : <button className={`nav-dates-button ${valueDate === date.value ? "nav-dates-button-active" : ""}`} onClick={()=> {
+                    setValueDate(date.value)
+                }}>{date.labelDate}</button>}
+            </div> 
+
+            </main>
+            
+        ))}
         </nav>
-        </div>
-                 
+        </div>       
     )
-    
 }

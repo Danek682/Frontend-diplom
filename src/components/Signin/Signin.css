@@ -169,13 +169,11 @@ text-transform: uppercase;
 .autorization__check{
   display: none;
   justify-content: center;
-  padding-top: 10px;
 }
 
 .authorization__checkTrue {
   display: flex;
   justify-content: center;
-  padding-top: 10px;
 }
 
 .success {

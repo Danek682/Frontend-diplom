@@ -98,6 +98,7 @@ cursor: pointer;
 
 .setIsStatus-button-usSend {
 display: flex;
+align-items: center;
 height: 40px;
 border-radius: 3px;
 box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.24),0px 0px 3px 0px rgba(0, 0, 0, 0.12);
@@ -121,6 +122,7 @@ cursor: pointer;
 
 .setIsStatus-button-unSend {
     height: 40px;
+    align-items: center;
     padding: 11.2px 31.39px 11.9px 31.76px;
     border-radius: 3px;
     box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.24), 0px 0px 3px 0px rgba(0, 0, 0, 0.12);
