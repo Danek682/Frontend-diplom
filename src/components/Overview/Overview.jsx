@@ -65,6 +65,25 @@ export function OverView (props) {
                                     </div>
                                 </div>
                             </div>
+                            {props.result?.halls.filter(hall => hall.hall_open === 1).map((hall,hallIndex)=> {
+                                const seances = props.result.seances?.filter(seance => seance.seance_hallid === hall.id)
+                                return (
+                                <div className='seance-box-halls' key={hallIndex}>
+                                    <div className='seance-box-halls-seances'>
+                                        {seances.length > 0 ? 
+                                        seances.filter(filmSeance => filmSeance.seance_filmid === films.id).map((seance,index)=> (
+                                        <div className='seance-box-halls-seances-seance' key={index}>
+                                            <span className='seance-box-halls-seances-seance-name'>{hall.hall_name}</span>
+                                            <button className='seance-box-halls-seances-seance-seanceButton'>{seance.seance_time}</button>
+                                        </div>
+                                        ))
+                                        : (
+                                            <span>Сеансов нет</span>
+                                        )}
+                                    </div>
+                                </div> 
+                                )
+                            })}
                         </div>
                     ))}
                 </div>
