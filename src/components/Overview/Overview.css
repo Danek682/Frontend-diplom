@@ -216,38 +216,43 @@ line-height: 16px;
 text-align: left;
 }
 
-.seance-box-halls-seances-seance {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-top: 20px;
-}
-
-.seance-box-halls-seances-seance-name{
+.seances-box-hallName{
+margin-bottom: 5px;
 color: rgba(0, 0, 0, 1);
 font-family: 'Roboto',sans-serif;
 font-size: 16px;
 font-weight: 700;
-line-height: 18px;
+line-height: 18px;;
 text-align: left;
 }
 
-.seance-box-halls-seances-seance-seanceButton {
-max-width: 55px;
-padding: 7.2px 7.32px 8.05px 8px;
+.seances-box {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+
+.seances-box-seancesTimes {
+  display: flex;
+  gap: 3px;
+}
+
+.seances-box-seanceTime-button{
+    width: 53px;
+height: 33px;
+padding: 7.2px 7.33px 8.05px 8px;
 border-radius: 2px;
 box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.24),0px 0px 2px 0px rgba(0, 0, 0, 0.12);
-background: rgba(255, 255, 255, 1);color: rgba(0, 0, 0, 1);
+background: rgba(255, 255, 255, 1);
+border: none;
+color: rgba(0, 0, 0, 1);
 font-family: 'Roboto',sans-serif;
 font-size: 15px;
 font-weight: 400;
 line-height: 17px;
 text-align: left;
-border:none;
-cursor: pointer;
 }
 
-.seance-box-halls-seances-seance-seanceButton:hover {
-  transform: scale(1.03);
-  transition: transform 0.2s ease;
+.seances-box-seanceTime-button:hover{
+  transform: scale(1.02);
 }

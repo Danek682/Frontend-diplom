@@ -44,7 +44,7 @@ export function ModalWindowAddSeance (props) {
                             </div>
                             <div className="addSeance-form-seanceTime">
                                 <label htmlFor="seanceTime" className="addSeanse-form-seanceTime-label">Время начала</label>
-                                <input type="text" name="seanceTime" id="seanceTime" className="addSeanse-form-seanceTime-input" value={props.time}  onChange={(e)=> (props.setTime(props.checkTime(e.target.value)))}/>
+                                <input type="text" name="seanceTime" id="seanceTime" className="addSeanse-form-seanceTime-input" value={props.time}  onChange={(e)=> (props.setTime(props.checkTime(e.target.value)))} placeholder={`Например: "08:00"`}/>
                             </div>
                                 <span className={error}>{errorVlaue}</span>
                             <div className="addSeanse-form-buttons">

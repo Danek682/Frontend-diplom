@@ -75,9 +75,9 @@ export function ConfigureFilms () {
 
     function checkTime(time) {
         if(!/^[0-9:]*$/.test(time)) {
-            if (time.length > 5) {
-                return time.slice(0,5)
-            }
+        }
+        if (time.length > 5) {
+            return time.slice(0,5)
         }
         if (time.length === 5 && !/^([01]\d|2[0-3]):([0-5]\d)$/.test(time)) {
             return "";

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './Overview.css'
 import { Link } from "react-router-dom"
+import moment from "moment"
 export function OverView (props) {
 
     const dates = [
@@ -65,25 +66,24 @@ export function OverView (props) {
                                     </div>
                                 </div>
                             </div>
-                            {props.result?.halls.filter(hall => hall.hall_open === 1).map((hall,hallIndex)=> {
-                                const seances = props.result.seances?.filter(seance => seance.seance_hallid === hall.id)
-                                return (
-                                <div className='seance-box-halls' key={hallIndex}>
-                                    <div className='seance-box-halls-seances'>
-                                        {seances.length > 0 ? 
-                                        seances.filter(filmSeance => filmSeance.seance_filmid === films.id).map((seance,index)=> (
-                                        <div className='seance-box-halls-seances-seance' key={index}>
-                                            <span className='seance-box-halls-seances-seance-name'>{hall.hall_name}</span>
-                                            <button className='seance-box-halls-seances-seance-seanceButton'>{seance.seance_time}</button>
-                                        </div>
+                           {props.result?.halls.filter((hall => hall.hall_open === 1)).map((hall,hallIndex)=> {
+                            const seances = props.result.seances?.filter(seance => seance.seance_hallid === hall.id && seance.seance_filmid === films.id)
+                            if(seances.length === 0) {return null }
+                            return (
+                                <div key={hallIndex} className='seances-box'>
+                                    <span className='seances-box-hallName'>{hall.hall_name}</span>
+                                    <div className='seances-box-seancesTimes'>
+                                        {seances.sort((a,b)=> moment(a.seance_time, "HH:mm") - moment(b.seance_time, "HH:mm"))
+                                        .map((seacne,index)=> (
+                                            <button className='seances-box-seanceTime-button' key={index}>{seacne.seance_time}</button>
                                         ))
-                                        : (
-                                            <span>Сеансов нет</span>
-                                        )}
-                                    </div>
-                                </div> 
-                                )
-                            })}
+                                        }
+                                         </div>
+
+                                </div>
+                            )
+                           })}
+
                         </div>
                     ))}
                 </div>
@@ -92,3 +92,4 @@ export function OverView (props) {
         </div>       
     )
 }
+
