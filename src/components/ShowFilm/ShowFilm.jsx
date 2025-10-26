@@ -4,12 +4,15 @@ import { Link } from "react-router"
 export function ShowFilm(props) {
     let massiveCopy = props.hallPlan.map(row =>[...row])
     const [count, setCount] = useState(1)
+    const [isActive, setIsActive] = useState(false)
     function showPlaces (place,rowIndex,placeIndex) {
         if(place === "standart") {
             return <span className="showFilm-hallPlane-buyingScheme__legend-standartPlace" key={placeIndex} onClick={()=> {
                 massiveCopy[rowIndex][placeIndex] = "selected"
                 props.setHallPlan(massiveCopy)
                 setCount(prev => prev + 1)
+                setIsActive(true)
+                props.setPriceForTickets(prev => prev + props.standartPrice)
             }}></span>
         }
         if (place === "vip") {
@@ -17,6 +20,8 @@ export function ShowFilm(props) {
                    massiveCopy[rowIndex][placeIndex] = "selected"
                    props.setHallPlan(massiveCopy)
                    setCount(prev => prev + 1)
+                   setIsActive(true)
+                   props.setPriceForTickets(prev => prev + props.vipPrice)
             }}></span>
         }
         if (place  === "selected") {
@@ -67,24 +72,28 @@ export function ShowFilm(props) {
                         </div>
                         <div className="showFilm-hallPlane-buyingScheme__legend-box">
                             <span className="showFilm-hallPlane-buyingScheme__legend-VipPlace"></span>
-                            <span className="showFilm-hallPlane-buyingScheme__legend-VipPlace-price"> {`Свободно (${props.vipPrice}руб)`}</span>
+                            <span className="showFilm-hallPlane-buyingScheme__legend-VipPlace-price"> {`Свободно VIP (${props.vipPrice}руб)`}</span>
                         </div>
                         <div className="showFilm-hallPlane-buyingScheme__legend-box">
                             <span className="showFilm-hallPlane-buyingScheme__legend-selectedPlace"></span>
                             <span className="showFilm-hallPlane-buyingScheme__legend-standartPlace-price"> {`Выбрано`}</span>
                         </div>
-                        {count > 1 ? 
-                         <button
+                    </div>
+                </div>
+                    <div className="showFilm-buttons-wrapper">
+                            <Link to ={"/confirmTickets"}><button disabled = {!isActive} className="showFilm-buttons__send" onClick={() => {setCount(0)}}>Забронировать</button></Link>
+                            {count >= 1 ? 
+                         <button className="showFilm-buttons__reset"
                             onClick={() => {
                                 props.setHallPlan(props.initialHallPlan.map(row => [...row]));
-                                setCount(1)
+                                setCount(0)
+                                props.setPriceForTickets(0)
                             }}
                             >
                             Отменить выбор
                         </button>
                         : ""}
                     </div>
-                </div>
             </main>
         </div>
     )

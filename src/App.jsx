@@ -24,9 +24,15 @@ function App() {
     const [standartPrice, setStandartPrice] = useState(null) // стандартная цена за место
     const [vipPrice, setVipPrice] = useState(null) // VIP цена за место
     const [initialHallPlan, setInitialHallPlan] = useState([]) // начальная конфигурация зала
+    const [priceForTickets,setPriceForTickets] = useState(0) //общая цена за все билеты
+
     // useEffect (()=> {
     //   console.log(hallPlan);
     // },[hallPlan]) 
+
+    // useEffect(()=> (
+    //   console.log(priceForTickets)
+    // ),[priceForTickets])
     
   return (
     <BrowserRouter>
@@ -43,6 +49,7 @@ function App() {
       setHallPlan = {setHallPlan}
       setInitialHallPlan = {setInitialHallPlan}
       initialHallPlan = {initialHallPlan}
+      setPriceForTickets = {setPriceForTickets}
       />}>
       </Route>
 
