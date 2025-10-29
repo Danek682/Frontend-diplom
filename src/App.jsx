@@ -6,6 +6,7 @@ import { AdministrationPanel } from './components/AdministrationPanel/Administra
 import { HallAdd } from './components/HallAdd/HallAdd';
 import { use, useEffect, useState } from "react"
 import { ShowFilm } from './components/ShowFilm/ShowFilm';
+import { Payment } from './components/confirmTickets/Payment';
 import axios from "axios";
 function App() {
    const [result, setResult] = useState(null)
@@ -18,25 +19,40 @@ function App() {
 
     const [valueDate, setValueDate] = useState(""); // Дата сеанса (пользователь)
     const [hallPlan, setHallPlan] = useState([]) //Получаемый план зала после нажатия на сеасн (пользователь)
-    const [hallName, setHallName] = useState("")
+    const [hallName, setHallName] = useState("") // Имя зала
     const [filmName, setFilmName] = useState("") // название фильма выбранного сеанса
     const [seacneStart, setSeanceStart] = useState(null) //время начала сеанса
+    const [seanceId, setSeanceId] = useState(null)
     const [standartPrice, setStandartPrice] = useState(null) // стандартная цена за место
     const [vipPrice, setVipPrice] = useState(null) // VIP цена за место
     const [initialHallPlan, setInitialHallPlan] = useState([]) // начальная конфигурация зала
     const [priceForTickets,setPriceForTickets] = useState(0) //общая цена за все билеты
-
-    // useEffect (()=> {
-    //   console.log(hallPlan);
-    // },[hallPlan]) 
+    const [selectedSeats, setSelectedSeats] = useState([]) // Выбранные места
+    useEffect (()=> {
+      console.log(hallPlan);
+    },[hallPlan]) 
 
     // useEffect(()=> (
     //   console.log(priceForTickets)
     // ),[priceForTickets])
-    
+
+    useEffect(()=>(console.log(selectedSeats)),[selectedSeats])
+    useEffect(()=> (console.log(priceForTickets)),[priceForTickets])
   return (
     <BrowserRouter>
        <Routes>
+
+      <Route path='/Payment' element = {<Payment
+          priceForTickets = {priceForTickets}
+          filmName = {filmName}
+          selectedSeats = {selectedSeats}
+          hallName = {hallName}
+          seacneStart = {seacneStart}
+          seanceId = {seanceId}
+          valueDate = {valueDate}
+      />}
+      >
+      </Route>
 
       <Route path='/film/:valueDate' element = {<ShowFilm 
       hallPlan = {hallPlan}
@@ -50,6 +66,9 @@ function App() {
       setInitialHallPlan = {setInitialHallPlan}
       initialHallPlan = {initialHallPlan}
       setPriceForTickets = {setPriceForTickets}
+      setSelectedSeats = {setSelectedSeats}
+      selectedSeats = {selectedSeats}
+      priceForTickets = {priceForTickets}
       />}>
       </Route>
 
@@ -65,6 +84,7 @@ function App() {
       setStandartPrice = {setStandartPrice}
       setVipPrice = {setVipPrice}
       setInitialHallPlan = {setInitialHallPlan}
+      setSeanceId = {setSeanceId}
       />}>
       </Route>
 

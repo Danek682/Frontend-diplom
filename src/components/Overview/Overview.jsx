@@ -98,6 +98,7 @@ export function OverView (props) {
                                                     console.log(seacne.id, String(props.valueDate))
                                                     props.setFilmName(films.film_name)
                                                     props.setSeanceStart(seacne.seance_time)
+                                                    props.setSeanceId(seacne.id)
                                                     props.setHallName(hall.hall_name)
                                                     props.setStandartPrice(hall.hall_price_standart)
                                                     props.setVipPrice(hall.hall_price_vip)

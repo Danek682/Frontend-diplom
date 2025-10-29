@@ -1,11 +1,11 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "./ShowFilm.css"
 import { Link } from "react-router"
 export function ShowFilm(props) {
-    let massiveCopy = props.hallPlan.map(row =>[...row])
     const [count, setCount] = useState(1)
     const [isActive, setIsActive] = useState(false)
     function showPlaces (place,rowIndex,placeIndex) {
+        let massiveCopy = props.hallPlan.map(row =>[...row])
         if(place === "standart") {
             return <span className="showFilm-hallPlane-buyingScheme__legend-standartPlace" key={placeIndex} onClick={()=> {
                 massiveCopy[rowIndex][placeIndex] = "selected"
@@ -13,24 +13,31 @@ export function ShowFilm(props) {
                 setCount(prev => prev + 1)
                 setIsActive(true)
                 props.setPriceForTickets(prev => prev + props.standartPrice)
+                props.setSelectedSeats(prev => [
+                    ...prev,
+                    {row: rowIndex + 1, place: placeIndex + 1, coast: props.standartPrice}
+                ])
             }}></span>
         }
         if (place === "vip") {
             return  <span className="showFilm-hallPlane-buyingScheme__legend-VipPlace" key={placeIndex} onClick={() => {
-                   massiveCopy[rowIndex][placeIndex] = "selected"
-                   props.setHallPlan(massiveCopy)
-                   setCount(prev => prev + 1)
-                   setIsActive(true)
-                   props.setPriceForTickets(prev => prev + props.vipPrice)
+                massiveCopy[rowIndex][placeIndex] = "selected"
+                props.setHallPlan(massiveCopy)
+                setCount(prev => prev + 1)
+                setIsActive(true)
+                props.setPriceForTickets(prev => prev + props.vipPrice)
+                props.setSelectedSeats(prev => [
+                ...prev,
+                {row: rowIndex + 1, place: placeIndex + 1, coast: props.vipPrice}
+                ])
             }}></span>
         }
         if (place  === "selected") {
             return (<span className="showFilm-hallPlane-buyingScheme__legend-selectedPlace" key={placeIndex} onClick={()=> {
-                massiveCopy[rowIndex][placeIndex] = props.hallPlan[rowIndex][placeIndex]
                 props.setHallPlan(massiveCopy)
             }}></span>)
         }
-        if (place === "disabled") {
+        if (place === "taken") {
             return  <span className="showFilm-hallPlane-buyingScheme__legend-reservedPlace"key={placeIndex}></span>
         }
     }
@@ -81,13 +88,17 @@ export function ShowFilm(props) {
                     </div>
                 </div>
                     <div className="showFilm-buttons-wrapper">
-                            <Link to ={"/confirmTickets"}><button disabled = {!isActive} className="showFilm-buttons__send" onClick={() => {setCount(0)}}>Забронировать</button></Link>
+
+                            <Link to ={"/Payment"}><button disabled = {!isActive} className="showFilm-buttons__send" onClick={() => {setCount(0)}}
+                            >Забронировать</button></Link>
+                                
                             {count >= 1 ? 
                          <button className="showFilm-buttons__reset"
                             onClick={() => {
                                 props.setHallPlan(props.initialHallPlan.map(row => [...row]));
                                 setCount(0)
                                 props.setPriceForTickets(0)
+                                props.setSelectedSeats([])
                             }}
                             >
                             Отменить выбор

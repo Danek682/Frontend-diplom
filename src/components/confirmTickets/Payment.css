@@ -1,0 +1,120 @@
+.payment {
+    background-image: url("https://avatars.mds.yandex.net/i?id=5eba452cb00a925aefd82d7f7a8c31b4_l-5031281-images-thumbs&n=13");
+min-height: 100vh; 
+  background-repeat: no-repeat;
+  background-position: center center; 
+  background-size: cover;    
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background-color: #3d3939;
+}
+
+.payment-header {
+width: 990px;
+height: 67px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 14px;
+margin: 0 auto;
+}
+
+.payment-wrapper {
+width: 990px;
+border-radius: 2px;
+background: rgba(241, 235, 230, 0.95);
+margin: 0 auto;
+}
+
+
+.payment-wrapper__header {
+  width: 990px;
+  height: 75px;
+  padding: 25px 15px 25px 15px;
+}
+
+.payment-wrapper__header-heading {
+  color: rgba(199, 111, 0, 1);
+  font-family: "Roboto",sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0%;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.line {
+  position: relative;
+  width: 990px;
+  height: 2px;
+  background-color: #ccc; 
+}
+
+.payment-main__ticketInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 15px;
+  margin-top: 20px;
+  gap: 5px ;
+}
+
+.filmName-main,
+.seats-main,
+.hall-main,
+.timeStart-main,
+.price-count-main {
+  color: rgb(0, 0, 0);
+  font-family: "Roboto",sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.payment-main__button {
+  display: flex;
+    justify-content: center;
+    padding: 42px 0px 42px 0px;
+}
+
+.button {
+cursor: pointer;
+width: auto;
+height: auto;
+padding: 11.2px 57px 11.9px 57px;
+border-radius: 3px;
+box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.24),0px 0px 3px 0px rgba(0, 0, 0, 0.12);
+background: rgba(22, 166, 175, 1);
+color: rgba(255, 255, 255, 1);
+font-family: 'Roboto',sans-serif;
+font-size: 14px;
+font-weight: 500;
+line-height: 16px;
+text-align: center;
+text-transform: uppercase;
+border: none;
+}
+
+.button:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s ease;
+}
+
+.payment-main-info {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  padding-left: 15px;
+  padding-bottom: 30px;
+}
+
+.payment-main-infoHeading {
+color: rgba(0, 0, 0, 1);
+font-family: 'Roboto',sans-serif;
+font-size: 14px;
+font-weight: 300;
+line-height: 16px;
+text-align: left;
+}
