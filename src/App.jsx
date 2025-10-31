@@ -7,6 +7,7 @@ import { HallAdd } from './components/HallAdd/HallAdd';
 import { use, useEffect, useState } from "react"
 import { ShowFilm } from './components/ShowFilm/ShowFilm';
 import { Payment } from './components/confirmTickets/Payment';
+import { QrCode } from './components/QrCode/QrCode';
 import axios from "axios";
 function App() {
    const [result, setResult] = useState(null)
@@ -41,6 +42,11 @@ function App() {
   return (
     <BrowserRouter>
        <Routes>
+
+      <Route path='/QrCode' element = {<QrCode
+                filmName = {filmName}
+      />}>
+      </Route>
 
       <Route path='/Payment' element = {<Payment
           priceForTickets = {priceForTickets}

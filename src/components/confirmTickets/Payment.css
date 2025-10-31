@@ -118,3 +118,18 @@ font-weight: 300;
 line-height: 16px;
 text-align: left;
 }
+
+.errorNone {
+  display: none;
+}
+
+.errorTrue {
+  justify-content: center;
+  display: flex;
+  color: rgb(141, 85, 85);
+font-family: 'Roboto',sans-serif;
+font-size: 14px;
+font-weight: 300;
+line-height: 16px;
+text-align: left;
+}

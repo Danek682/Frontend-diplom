@@ -1,7 +1,11 @@
 import axios from "axios"
 import "./Payment.css"
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react"
 export function Payment (props) {
+    const navigate = useNavigate();
+    const [classNameError, setClassNameError] = useState("errorNone")
+    const [errorValue, setErrorValue] = useState("")
     return (
         <div className="payment">
             <header className="payment-header"> 
@@ -24,6 +28,7 @@ export function Payment (props) {
                         <span className="seance-timeStart">Начало сеанса: <span className="timeStart-main">{props.seacneStart}</span></span>
                         <span className="price-count">Стоимость: <span className="price-count-main">{`${props.priceForTickets} рублей`}</span></span>
                     </div>
+                        <span className={classNameError}>{errorValue}</span>
                     <div className="payment-main__button">
                         <button className="button" onClick={()=> {
                             axios.post("https://shfe-diplom.neto-server.ru/ticket", {
@@ -32,6 +37,15 @@ export function Payment (props) {
                                 tickets: JSON.stringify(props.selectedSeats)
                                 })
                                 .then(response => {
+                                    if(response.data.success === false) {
+                                        setClassNameError("errorTrue")
+                                        setTimeout(() => {
+                                            setClassNameError("errorNone")
+                                        }, 3000);
+                                        setErrorValue(response.data.error)
+                                        return
+                                    } 
+                                (navigate("/QrCode"))
                                 console.log(response.data);
                                 })
                                 .catch(error => {

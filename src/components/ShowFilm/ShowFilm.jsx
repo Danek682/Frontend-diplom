@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import "./ShowFilm.css"
 import { Link } from "react-router"
 export function ShowFilm(props) {
-    const [count, setCount] = useState(1)
+    const [count, setCount] = useState(0)
     const [isActive, setIsActive] = useState(false)
     function showPlaces (place,rowIndex,placeIndex) {
         let massiveCopy = props.hallPlan.map(row =>[...row])
@@ -91,14 +91,14 @@ export function ShowFilm(props) {
 
                             <Link to ={"/Payment"}><button disabled = {!isActive} className="showFilm-buttons__send" onClick={() => {setCount(0)}}
                             >Забронировать</button></Link>
-                                
                             {count >= 1 ? 
-                         <button className="showFilm-buttons__reset"
+                         <button className="showFilm-buttons__reset" type="reset"
                             onClick={() => {
                                 props.setHallPlan(props.initialHallPlan.map(row => [...row]));
                                 setCount(0)
                                 props.setPriceForTickets(0)
                                 props.setSelectedSeats([])
+                                setIsActive(false)
                             }}
                             >
                             Отменить выбор

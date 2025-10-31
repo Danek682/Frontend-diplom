@@ -15,6 +15,16 @@ export function ModalWindowAddSeance (props) {
                         </div>
                         <form className="addSeanse-form" onSubmit={(e)=> {
                             e.preventDefault();
+                            if (!/^([01]\d|2[0-3]):([0-5]\d)$/.test(props.time)) {
+                                setError("error")
+                                setErrorValue("Введите корректное время в формате ЧЧ:ММ")
+                                props.setTime("")
+                                setTimeout(() => {
+                                            setErrorValue("")
+                                            setError("noneError")
+                                        }, 3000);
+                                return
+                            }
                             axios.post("https://shfe-diplom.neto-server.ru/seance",{
                                 seanceHallid: Number(props.dropHall.id),
                                 seanceFilmid: Number(props.draggedFilm.id),
@@ -48,7 +58,9 @@ export function ModalWindowAddSeance (props) {
                             </div>
                                 <span className={error}>{errorVlaue}</span>
                             <div className="addSeanse-form-buttons">
-                                <button type="submit" className="addSeanse-form-buttons-send">Отправить</button>
+                                <button type="submit" className="addSeanse-form-buttons-send" onClick={()=> {
+                                    props.checkTime(props.time)
+                                }}>Отправить</button>
                                 <button type="reset" className="addSeanse-form-buttons-reset" onClick={() => {
                                     props.setModalVisible(false)
                                     setError("noneError");
