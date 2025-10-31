@@ -45,9 +45,9 @@ margin: 0 auto;
 
 .line {
   position: relative;
-  width: 990px;
+  width: inherit;
   height: 2px;
-  background-color: #ccc; 
+  background-color: #ccc;   
 }
 
 .payment-main__ticketInfo {

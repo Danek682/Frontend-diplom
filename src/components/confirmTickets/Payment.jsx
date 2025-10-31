@@ -10,7 +10,11 @@ export function Payment (props) {
         <div className="payment">
             <header className="payment-header"> 
                 <Link to="/">
-                    <img src="/gotocinema.png" alt="Логотип кинотеатра" />
+                    <button onClick={()=> {
+                        props.setSelectedSeats([])
+                    }} className="logobutton">
+                        <img src="/gotocinema.png" alt="Логотип кинотеатра" />
+                    </button>
                 </Link>
             </header>
             <main className="payment-wrapper">
@@ -27,7 +31,7 @@ export function Payment (props) {
                         <span className="payment-hall">В зале: <span className="hall-main">{props.hallName}</span></span>
                         <span className="seance-timeStart">Начало сеанса: <span className="timeStart-main">{props.seacneStart}</span></span>
                         <span className="price-count">Стоимость: <span className="price-count-main">{`${props.priceForTickets} рублей`}</span></span>
-                    </div>
+                </div>
                         <span className={classNameError}>{errorValue}</span>
                     <div className="payment-main__button">
                         <button className="button" onClick={()=> {

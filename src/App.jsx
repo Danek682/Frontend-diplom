@@ -44,7 +44,13 @@ function App() {
        <Routes>
 
       <Route path='/QrCode' element = {<QrCode
-                filmName = {filmName}
+          filmName = {filmName}
+          selectedSeats = {selectedSeats}
+          hallName = {hallName}
+          seacneStart = {seacneStart}
+          priceForTickets = {priceForTickets}
+          valueDate = {valueDate}
+          setSelectedSeats = {setSelectedSeats}
       />}>
       </Route>
 

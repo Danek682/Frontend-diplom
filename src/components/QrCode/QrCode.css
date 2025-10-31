@@ -1,0 +1,100 @@
+.qrcode {
+        background-image: url("https://avatars.mds.yandex.net/i?id=5eba452cb00a925aefd82d7f7a8c31b4_l-5031281-images-thumbs&n=13");
+min-height: 100vh; 
+  background-repeat: no-repeat;
+  background-position: center center; 
+  background-size: cover;    
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background-color: #3d3939;
+}
+
+.qrcode-header {
+    width: 990px;
+height: 67px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 14px;
+margin: 0 auto;
+}
+
+.qrcode-wrapper{
+    width: 990px;
+border-radius: 2px;
+background: rgba(241, 235, 230, 0.95);
+margin: 0 auto;
+}
+
+.qrcode-wrapper__header {
+      width: 990px;
+  height: 75px;
+  padding: 25px 15px 25px 15px;
+}
+
+.qrcode-wrapper__header-heading {
+      color: rgba(199, 111, 0, 1);
+  font-family: "Roboto",sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0%;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.line {
+  position: relative;
+  width: inherit;
+  height: 2px;
+  background-color: #ccc; 
+}
+
+.qrcode-main-ticketinfo{
+display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 15px;
+  margin-top: 20px;
+  gap: 5px ;
+}
+
+.qrCode {
+    display: flex;
+    justify-content: center;
+}
+
+.qrCode {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.qrcode-info {
+display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 15px;
+  margin-top: 20px;
+  gap: 15px ;
+  padding-bottom: 20px;
+}
+
+.qrcode-info__ticket-hint {
+    color: rgba(0, 0, 0, 1);
+
+font-family: 'Roboto',sans-serif;
+font-size: 14px;
+font-weight: 300;
+line-height: 16px;
+letter-spacing: 0%;
+text-align: left;
+}
+
+.logobutton {
+padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
