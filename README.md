@@ -36,7 +36,8 @@ import moment from "moment"
 ### Административная часть (AdministrationPanel):
 - **AdministrationPanel.jsx** -  Основная часть административной панели, навигация, изменение конфигурации мест зала.
 - **OpenSales** - Открытие продаж.
-- **ConfigurePrice** - изменение цен за место.
+- **ConfigurePrice** - Изменение цен за место.
+- **HllAdd** - Добавление зала.
 
 #### ConfigureFilms:
   - **ConfigureFilms.jsx** - Добавление сеансов (Drag&Drop).
