@@ -36,7 +36,7 @@ export function OverView (props) {
           <header className='header'>
             <div className='header__container'>
                 <Link to="/">
-                    <img src="/gotocinema.png" alt="Логотип кинотеатра" />
+                    <img src="gotocinema.png" alt="Логотип кинотеатра" />
                 </Link>
                 <Link to="/signin">
                     <button className='button-login'>Войти</button>

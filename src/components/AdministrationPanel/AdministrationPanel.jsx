@@ -186,7 +186,7 @@ export function AdministrationPanel () {
                                         <span className="hall" key={h.hall_name}>- {h.hall_name} 
                                         <button className="bashButton" onClick={() => {
                                             deleteHall(h.id) }}> 
-                                            <img className="bashImage" src="/bash.png" alt="Удалить"/>
+                                            <img className="bashImage" src="bash.png" alt="Удалить"/>
                                         </button> 
                                     </span>
                                 ))}

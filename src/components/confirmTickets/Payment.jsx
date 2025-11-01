@@ -13,7 +13,7 @@ export function Payment (props) {
                     <button onClick={()=> {
                         props.setSelectedSeats([])
                     }} className="logobutton">
-                        <img src="/gotocinema.png" alt="Логотип кинотеатра" />
+                        <img src="gotocinema.png" alt="Логотип кинотеатра" />
                     </button>
                 </Link>
             </header>

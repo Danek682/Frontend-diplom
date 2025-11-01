@@ -28,7 +28,7 @@ export function ModalWindow (props) {
                         <div className="addFilmModal-header">
                             <span className="addFilmModal-heading">Добавление фильма</span>
                             <button className="addFilmModal-buttonClose">
-                                <img src="/close.png" alt="крестик" className="addFilmModal-buttonClose-img" onClick={() => { props.setVisible(false)}}/>
+                                <img src="close.png" alt="крестик" className="addFilmModal-buttonClose-img" onClick={() => { props.setVisible(false)}}/>
                             </button>
                         </div>
                         <form className="addFilm-form" onSubmit={(e)=> {

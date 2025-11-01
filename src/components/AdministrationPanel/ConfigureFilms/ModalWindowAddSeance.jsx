@@ -10,7 +10,7 @@ export function ModalWindowAddSeance (props) {
                         <div className="addSeanseModal-header">
                             <h2 className="addSeanseModal-header__heading">Добавление сеанса</h2>
                             <button className="addSeanseModal-buttonClose">
-                                <img src="/close.png" alt="крестик" className="addFilmModal-buttonClose-img" onClick={() => { props.setModalVisible(false)}}/>
+                                <img src="close.png" alt="крестик" className="addFilmModal-buttonClose-img" onClick={() => { props.setModalVisible(false)}}/>
                             </button>
                         </div>
                         <form className="addSeanse-form" onSubmit={(e)=> {

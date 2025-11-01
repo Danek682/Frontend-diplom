@@ -26,7 +26,7 @@ const [errorValue, setErrorValue] = useState("")
             <div className="deleteSeanceModal-header">
                 <h2 className="deleteSeanceModal-header__heading">Удаление сеанса</h2>
                 <button className="deleteSeanseModal-buttonClose">
-                     <img src="/close.png" alt="крестик" className="addFilmModal-buttonClose-img" onClick={() => { props.setModalVisibleSeance(false)}}/>
+                     <img src="close.png" alt="крестик" className="addFilmModal-buttonClose-img" onClick={() => { props.setModalVisibleSeance(false)}}/>
                 </button>
             </div>
             <div className="deleteSeanceModal-wrapper">
