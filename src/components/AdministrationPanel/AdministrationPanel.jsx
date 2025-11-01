@@ -165,7 +165,7 @@ export function AdministrationPanel () {
             <header className="header__adminPanel">
                 <div className="header__logos">
                     <div className="header__logos_admin">
-                        <img src="/gotocinema.png" alt="Логотип кинотеатра" />
+                        <img src="gotocinema.png" alt="Логотип кинотеатра" />
                         <span className="header__adminspan">Администраторская</span>
                     </div>
                 </div>
@@ -191,7 +191,7 @@ export function AdministrationPanel () {
                                     </span>
                                 ))}
                             </div>                        
-                        <Link to="/admin/hallAdd"><button className="hallAdd__button">Создать зал</button></Link>
+                        <Link to="/Frontend-diplom/admin/hallAdd"><button className="hallAdd__button">Создать зал</button></Link>
                             </div>
                         </div>
                 </div>

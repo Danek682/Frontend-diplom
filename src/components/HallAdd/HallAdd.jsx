@@ -47,9 +47,9 @@ function onSubmit (e) {
             <div className="hallAdd__container">
                 <header className="hallAdd__header">
                     <span className="hallAdd__header-span">Добавление зала</span>
-                    <Link to="/admin">
+                    <Link to="/Frontend-diplom/admin">
                         <button className="hallAdd__header-button">
-                            <img className="hallAdd__header-img" src="/close.png" alt="Закрыть" />
+                            <img className="hallAdd__header-img" src="http://localhost:5173/Frontend-diplom/close.png" alt="Закрыть" />
                         </button>
                     </Link>
                 </header>
@@ -62,7 +62,7 @@ function onSubmit (e) {
                             <span className={`${className} ${classHallIsActive}`}>{value}</span>
                         <div className="hallAdd__main_buttons">
                             <button className="hallAdd__main_buttons-filmAdd">Добавить зал</button>
-                            <Link to="/admin">
+                            <Link to="/Frontend-diplom/admin">
                                 <button className="hallAdd__main_buttons-close">Отменить</button>
                             </Link>
                         </div>

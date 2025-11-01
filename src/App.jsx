@@ -43,7 +43,7 @@ function App() {
     <BrowserRouter>
        <Routes>
 
-      <Route path='/QrCode' element = {<QrCode
+      <Route path='/Frontend-diplom/QrCode' element = {<QrCode
           filmName = {filmName}
           selectedSeats = {selectedSeats}
           hallName = {hallName}
@@ -54,7 +54,7 @@ function App() {
       />}>
       </Route>
 
-      <Route path='/Payment' element = {<Payment
+      <Route path='/Frontend-diplom/Payment' element = {<Payment
           priceForTickets = {priceForTickets}
           filmName = {filmName}
           selectedSeats = {selectedSeats}
@@ -66,7 +66,7 @@ function App() {
       >
       </Route>
 
-      <Route path='/film/:valueDate' element = {<ShowFilm 
+      <Route path='/Frontend-diplom/film/:valueDate' element = {<ShowFilm 
       hallPlan = {hallPlan}
       valueDate = {valueDate}
       filmName = {filmName}
@@ -84,7 +84,7 @@ function App() {
       />}>
       </Route>
 
-      <Route path='/' element = {<OverView 
+      <Route path='/Frontend-diplom/' element = {<OverView 
       result = {result}
       valueDate = {valueDate}
       setValueDate = {setValueDate}
@@ -100,13 +100,13 @@ function App() {
       />}>
       </Route>
 
-      <Route path='/signin' element = {<Signin/>}>
+      <Route path='/Frontend-diplom/signin' element = {<Signin/>}>
       </Route>
 
-      <Route path='/admin' element = {<AdministrationPanel/>}>
+      <Route path='/Frontend-diplom/admin' element = {<AdministrationPanel/>}>
       </Route>
 
-      <Route path='/admin/hallAdd' element = {<HallAdd/>}>
+      <Route path='/Frontend-diplom/admin/hallAdd' element = {<HallAdd/>}>
       </Route>
 
     </Routes>

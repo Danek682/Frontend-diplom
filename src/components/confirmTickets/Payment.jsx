@@ -9,7 +9,7 @@ export function Payment (props) {
     return (
         <div className="payment">
             <header className="payment-header"> 
-                <Link to="/">
+                <Link to="/Frontend-diplom/">
                     <button onClick={()=> {
                         props.setSelectedSeats([])
                     }} className="logobutton">
@@ -49,7 +49,7 @@ export function Payment (props) {
                                         setErrorValue(response.data.error)
                                         return
                                     } 
-                                (navigate("/QrCode"))
+                                (navigate("/Frontend-diplom/QrCode"))
                                 console.log(response.data);
                                 })
                                 .catch(error => {

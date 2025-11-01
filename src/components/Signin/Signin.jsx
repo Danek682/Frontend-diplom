@@ -28,7 +28,7 @@ export function Signin () {
                 setValue(response.data.result);
                 setNameClass("authorization__checkTrue");
                 setNameClassACtive("success");
-                setTimeout(() => {(navigate("/admin"))}, 1000);
+                setTimeout(() => {(navigate("/Frontend-diplom/admin"))}, 1000);
             } else {
                 setValue(response.data.error);
                 setNameClass("authorization__checkTrue");
@@ -54,7 +54,7 @@ export function Signin () {
                     <img src="gotocinema.png" alt="Логотип кинотеатра" />
                     <span className="header__adminspan">Администраторская</span>
                 </div>
-                <  Link to = "/"><button className="backButton"> Вернуться на главную</button></Link>
+                <  Link to = "/Frontend-diplom/"><button className="backButton"> Вернуться на главную</button></Link>
            </div>
         </header>
         <main className="content">

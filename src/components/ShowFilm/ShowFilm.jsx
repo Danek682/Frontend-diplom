@@ -45,8 +45,8 @@ export function ShowFilm(props) {
     return (
         <div className="showFilm">
             <header className="showFilm-header"> 
-                <Link to="/">
-                    <img src="/gotocinema.png" alt="Логотип кинотеатра" />
+                <Link to="/Frontend-diplom/">
+                    <img src="http://localhost:5173/Frontend-diplom/gotocinema.png" alt="Логотип кинотеатра" />
                 </Link>
             </header>
             <main className="showFilm-main">
@@ -89,7 +89,7 @@ export function ShowFilm(props) {
                 </div>
                     <div className="showFilm-buttons-wrapper">
 
-                            <Link to ={"/Payment"}><button disabled = {!isActive} className="showFilm-buttons__send" onClick={() => {setCount(0)}}
+                            <Link to ={"/Frontend-diplom/Payment"}><button disabled = {!isActive} className="showFilm-buttons__send" onClick={() => {setCount(0)}}
                             >Забронировать</button></Link>
                             {count >= 1 ? 
                          <button className="showFilm-buttons__reset" type="reset"

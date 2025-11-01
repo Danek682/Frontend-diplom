@@ -35,10 +35,10 @@ export function OverView (props) {
         <div className='app'>
           <header className='header'>
             <div className='header__container'>
-                <Link to="/">
+                <Link to="/Frontend-diplom/">
                     <img src="gotocinema.png" alt="Логотип кинотеатра" />
                 </Link>
-                <Link to="/signin">
+                <Link to="/Frontend-diplom/signin">
                     <button className='button-login'>Войти</button>
                 </Link>
             </div>
@@ -93,7 +93,7 @@ export function OverView (props) {
                                         .map((seacne,index)=> {
                                             return ( 
                                                 <div key={index}>
-                                                    <Link to={`/film/${props.valueDate}`}>
+                                                    <Link to={`/Frontend-diplom/film/${props.valueDate}`}>
                                                     <button onClick={() => {
                                                     console.log(seacne.id, String(props.valueDate))
                                                     props.setFilmName(films.film_name)

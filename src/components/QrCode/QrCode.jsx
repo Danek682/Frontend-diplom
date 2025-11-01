@@ -14,7 +14,7 @@ export function QrCode(props) {
     return (
         <div className="qrcode">
             <header className="qrcode-header">
-                <Link to="/">
+                <Link to="/Frontend-diplom/">
                     <button onClick={()=> {
                         props.setSelectedSeats([])
                     }} className="logobutton">
