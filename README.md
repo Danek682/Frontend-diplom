@@ -39,10 +39,10 @@ import moment from "moment"
 - **ConfigurePrice** - изменение цен за место.
 
 #### ConfigureFilms:
-  -**ConfigureFilms.jsx** - Добавление сеансов (Drag&Drop).
-  -**ModalWindow.jsx** - Модальное окно добавления фильма.
-  -**ModalWindowAddSeance.jsx** - Модальное окно добавления сеанса.
-  -**ModalWindowDeleteSeance.jsx** - модальное окно удаления сеанса
+  - **ConfigureFilms.jsx** - Добавление сеансов (Drag&Drop).
+  - **ModalWindow.jsx** - Модальное окно добавления фильма.
+  - **ModalWindowAddSeance.jsx** - Модальное окно добавления сеанса.
+  - **ModalWindowDeleteSeance.jsx** - модальное окно удаления сеанса
   
 ## В процессе разработки:
 - Адаптив для мобильных и планшетных версий
