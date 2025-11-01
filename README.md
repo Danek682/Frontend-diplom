@@ -8,7 +8,6 @@ https://danek682.github.io/Frontend-diplom/ **-ссылка на gh-pages**
  useEffect(()=>{
         axios.get("https://shfe-diplom.neto-server.ru/alldata").then(response => {
             console.log(response.data)
-            setResult(response.data.result)
         }).catch(err => (console.log(err)))
   },[]) 
 }  
