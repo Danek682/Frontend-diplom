@@ -1,5 +1,5 @@
 # Дипломная работа
-https://danek682.github.io/Frontend-diplom/ **-ссылка на gh-pages**
+https://danek682.github.io/Frontend-diplom/ **- ссылка на gh-pages**
 
 В ходе выполнения дипломной работы для работы с API использовалась библиотека Axios.
 ## Пример:
