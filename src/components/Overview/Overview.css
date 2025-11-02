@@ -1,4 +1,7 @@
-
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 .app {
 background-image: url("https://avatars.mds.yandex.net/i?id=5eba452cb00a925aefd82d7f7a8c31b4_l-5031281-images-thumbs&n=13");
 min-height: 100vh; 
@@ -259,4 +262,75 @@ cursor: pointer;
 
 .seances-box-seanceTime-button:hover{
   transform: scale(1.02);
+}
+
+@media (min-width: 641px) and (max-width: 1199px) {
+  .header,
+  .nav,
+  .seance-box{
+    width: 100%;
+  }
+
+  .seances {
+    width: 100%;
+  }
+
+  .header__container {
+    width: 100%;
+  }
+
+  .seance-box__info {
+    width: 100%;
+  }
+
+  .seance-box__info-descriptions {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .nav-dates,
+  .nav-dates-button--holiday,
+  .nav-dates-button  {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 640px) {
+  header,
+  .nav,
+  .seance-box{
+    width: 100%;
+  }
+
+  .seances {
+    width: 100%;
+  }
+
+  .header__container {
+
+  display: flex;
+    width: 100%;
+    max-width: 640px;
+  }
+
+  .seance-box__info {
+    width: 100%;
+  }
+
+  .seance-box__info-descriptions {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .nav-dates,
+  .nav-dates-button--holiday,
+  .nav-dates-button  {
+    width: 100%;
+  }
+
+  .header {
+    width: 100%;
+  }
+
 }

@@ -26,15 +26,36 @@ margin: 0 auto;
 }
 
 .showFilm-main__header {
+  display: flex;
+  justify-content: space-between;
 width: auto;
 height: auto;
 padding: 15px 555.6px 15px 15px;
+}
+
+.tap-info {
+  display: none;
 }
 
 .showFilm-main__header-buying-info {
     display: flex;
     flex-direction: column;
     gap: 5px; 
+}
+
+.hint {
+  width: 24px;
+height: 32px;
+}
+
+.hint-info {
+  color: rgba(0, 0, 0, 1);
+font-family: 'Roboto', sans-serif;
+font-size: 14px;
+font-weight: 300;
+line-height: 16px;
+letter-spacing: 0%;
+text-align: center;
 }
 
 .showFilm-main__header-buying-info-filmName,
@@ -203,4 +224,40 @@ height: 40px;
 .showFilm-buttons__reset:hover {
   transform: scale(1.04);
   transition: transform 0.2s ease ;
+}
+
+@media (min-width: 641px) and (max-width: 1199px) {
+  .showFilm-header,
+  .showFilm-main,
+  .showFilm-main__header{
+    width: 100%;
+  }
+
+  .showFilm-main__header{
+    padding: 15px 0px 15px 15px;
+  }
+
+  .tap-info {
+  display: flex;
+  width: 100px;
+  margin: 0px 16px 0px 16px;
+}
+}
+
+@media (max-width: 640px) {
+  .showFilm-header,
+  .showFilm-main,
+  .showFilm-main__header{
+    width: 100%;
+  }
+
+  .showFilm-main__header{
+    padding: 15px 0px 15px 15px;
+  }
+  
+  .tap-info {
+  display: flex;
+  width: 100px;
+  margin: 0px 16px 0px 16px;
+}
 }

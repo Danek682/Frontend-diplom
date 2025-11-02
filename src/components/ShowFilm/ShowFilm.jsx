@@ -56,6 +56,10 @@ export function ShowFilm(props) {
                         <span className="showFilm-main__header-buying-info-filmStart">{`Начало сеанса: ${props.seacneStart}`}</span>
                         <span className="showFilm-main__header-buying-info-hallName">{props.hallName}</span>
                     </div>
+                    <div className="tap-info">
+                        <img className="hint" src="hint.png"/>
+                        <span className="hint-info">Тапните дважды, чтобы увеличить</span>
+                    </div>
                 </div>
                 <div className="showFilm-hallPlane">
                     <span className="showFilm-hallPlane-screen">&nbsp;Экран</span>

@@ -133,3 +133,19 @@ font-weight: 300;
 line-height: 16px;
 text-align: left;
 }
+
+@media (min-width: 641px) and (max-width: 1199px) {
+  .payment-header,
+  .payment-wrapper,
+  .payment-wrapper__header{
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .payment-header,
+  .payment-wrapper,
+  .payment-wrapper__header{
+    width: 100%;
+  }
+}

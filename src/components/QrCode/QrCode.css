@@ -98,3 +98,26 @@ padding: 0;
   background-color: transparent;
   cursor: pointer;
 }
+
+@media (min-width: 641px) and (max-width: 1199px) {
+  .qrcode-header,
+  .qrcode-wrapper,
+  .qrcode-wrapper__header {
+    width: 100%;
+  }
+
+  .line {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .qrcode-header,
+  .qrcode-wrapper,
+  .qrcode-wrapper__header {
+    width: 100%;
+  }
+  .line {
+    width: 100%;
+  }
+}
