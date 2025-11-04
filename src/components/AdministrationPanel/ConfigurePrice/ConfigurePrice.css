@@ -116,3 +116,58 @@ gap: 3.5px ;
 transform: scale(1.05);
 transition: transform 0.15s ease;
 }
+
+@media (min-width: 641px) and (max-width: 1199px) {
+    .configurePrice__header,
+    .configurePrice__main,
+    .configurePrice__content {
+        width: 100%;
+    } 
+
+    .hallPrice__content_hall {
+        height: auto;
+    }
+
+    .configurePrice__inputs {
+        width: 100%;
+    }
+
+    .fieldset {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .configurePrice__header,
+    .configurePrice__main,
+    .configurePrice__content {
+        width: 100%;
+    } 
+
+    .configurePrice__header {
+        padding: 0px 20px 0px 20px;
+    }
+
+    .configurePrice__content-paragraph{
+        padding: 35px 0px 0px 20px;
+    }
+
+    .configurePrice__content-hallsButtons {
+        padding: 10px 104px 20px 20px;
+        flex-wrap: wrap;
+    }
+
+    .hallPrice__content_hall-isActive,
+    .hallPrice__content_hall {
+        height: auto;
+    }
+
+    .configurePrice__form-paragraph,
+    .configurePrice__inputs {
+        padding: 10px 0px 0px 20px;
+    }
+
+    
+}

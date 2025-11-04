@@ -1,5 +1,5 @@
 .addSeanseModal {
-max-width: 960px;
+width: 960px;
 height: 380px;
 background: rgba(234, 233, 235, 0.95);
 }
@@ -154,4 +154,50 @@ color: rgb(24, 112, 24);
 padding-left: 10px;
 }
 
+@media (min-width: 641px) and (max-width: 1199px) {
+  .modalContent,
+  .addSeanseModal,
+  .addSeanseModal-header {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .modalContent,
+  .addSeanseModal,
+  .addSeanseModal-header {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+.addSeanse-form {
+  margin: 35px 10px 0px 10px;
+}
+
+.addSeanseModal-header {
+  padding: 0px 15px 0px 15px;
+}
+
+.addSeanse-form-buttons {
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+}
+
+.addSeanseModal {
+  height: auto;
+}
+
+.deleteSeance {
+  display: flex;
+  top: -27px;
+  left: 50px;
+}
+
+.trashButton {
+  width: 25px;
+  height: 25px;
+}
+
+}
 

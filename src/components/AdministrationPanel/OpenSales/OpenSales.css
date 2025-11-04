@@ -148,3 +148,46 @@ transition: transform 0.15s ease;
 transform: scale(1.05);
 transition: transform 0.15s ease;
 }
+
+@media (min-width: 641px) and (max-width: 1199px) {
+    .openSales__header,
+    .openSales__main,
+    .openSales__content {
+        width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .openSales__header,
+    .openSales__main,
+    .openSales__content {
+        width: 100%;
+    }
+
+    .setIsStatus-button-send,
+    .setIsStatus-button-unSend,
+    .openSales__content-hall,
+    .openSales__content-halls-isActive {
+        height: auto;
+    }
+
+    .openSales__header {
+        padding: 35px 20px 35px 20px;
+    }
+
+    .openSales__content-halls {
+        margin-left: 20px;
+    }
+
+    .openSales__content-heading {
+        margin: 35px 42px 35px 20px;
+    }
+
+    .openSales__content-halls {
+        flex-wrap: wrap;
+    }
+    
+    .setIsStatus-buttons {
+        flex-wrap: wrap;
+    }
+}

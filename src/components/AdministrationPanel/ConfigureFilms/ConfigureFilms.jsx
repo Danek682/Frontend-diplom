@@ -145,7 +145,7 @@ export function ConfigureFilms () {
                                     handleDropSeance(seanceDraggble,filmInSeance,seanceId)
                                 }}
                                 >
-                                    <img className="trashButton" src="/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" alt="Удалить" />
+                                    <img className="trashButton" src="delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" alt="Удалить" />
                                 </button> : ""}
                                 <div className="hallls-block-timeline" 
                                 onDragOver={handleDragOver} 

@@ -22,7 +22,7 @@ const [errorValue, setErrorValue] = useState("")
     }
 
     return (
-        <div className="deleteSeanceModal">
+        <div className="deleteSeanceModal"> 
             <div className="deleteSeanceModal-header">
                 <h2 className="deleteSeanceModal-header__heading">Удаление сеанса</h2>
                 <button className="deleteSeanseModal-buttonClose">

@@ -214,3 +214,37 @@ font-weight: 400;
 line-height: 18px;
 text-align: left;
 }
+
+@media (min-width: 641px) and (max-width: 1199px) {
+  .modalContent,
+  .addFilmModal,
+  .addFilmModal-header {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .modalContent,
+  .addFilmModal,
+  .addFilmModal-header {
+    width: 100%;
+    margin: 0 auto;
+    height: auto;
+  }
+
+.addFilmModal-header {
+  padding: 16px 15px 14px 15px;
+}
+
+  .addFilm-form-buttonAddFilm,
+  .addFilm-form-DowloadPoster-label,
+  .addFilm-form-buttonCancel {
+    height: auto;
+  }
+
+  .addFilm-form-buttons {
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+}

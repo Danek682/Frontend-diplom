@@ -40,10 +40,10 @@ export function ConfigurePrice (props) {
                 ))}
             </div>
             <div className="configurePrice__main">
-                {props.hall.map((h,index)=> (
-                    <div className="configurePrice__main-prices" key={index}>
-                        {activeHall === h.id ? 
-                        <form className="configurePrice__form"
+                    <div className="configurePrice__main-prices">
+                         {props.hall.map((h,index)=> (
+                        activeHall === h.id ? 
+                        <form className="configurePrice__form" key={index}
                         onSubmit={(e) => {
                             e.preventDefault();
                             const target = e.target
@@ -99,9 +99,9 @@ export function ConfigurePrice (props) {
                                 <button className="fieldset__send-button" >Сохранить</button>
                             </div>
                         </form>
-                        : ""}
+                        : ""
+                        ) )}
                     </div>
-                ))}
             </div>
         </div>
     )

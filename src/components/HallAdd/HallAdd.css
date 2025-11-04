@@ -143,3 +143,59 @@ line-height: 16px;
 text-align: center;
 text-transform: uppercase;
 }
+
+@media (min-width: 641px) and (max-width: 1199px) {
+    .hallAdd,
+    .hallAdd__container,
+    .hallAdd__header {
+        width: 100%;
+    }
+
+    .hallAdd__main {
+        width: 100%;
+        margin: 34px 105px 0px 0px;
+    }
+    
+    .hallAdd__form {
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .hallAdd__form-input {
+        width: 80%;
+    }
+}
+
+@media (max-width: 640px) {
+    .hallAdd,
+    .hallAdd__container,
+    .hallAdd__header {
+        width: 100%;
+    }
+
+      .hallAdd__main {
+        width: 100%;
+    }
+
+    .hallAdd__form-input {
+        width: 100%;
+    }
+
+    .hallAdd__form {
+        width: 90%;
+    }
+
+    .hallAdd__main {
+        margin: 34px 105px 0px 20px;
+    }
+
+    .hallAdd__main_buttons {
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    .hallAdd__container {
+        height: auto;
+    }
+}

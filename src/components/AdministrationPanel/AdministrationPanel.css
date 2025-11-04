@@ -465,6 +465,13 @@ box-sizing: border-box;
 border: 1px solid rgba(57, 57, 57, 1);
 border-radius: 4px;
 background: rgba(196, 196, 196, 1);
+cursor: pointer;
+}
+
+.places__classes-standartPlace-button:hover,
+.places__classes-vipPlace-button:hover,
+.places__classes-blockedPlace-button:hover {
+  transform: scale(1.035);
 }
 
 .places__classes-vipPlace-button {
@@ -474,6 +481,7 @@ box-sizing: border-box;
 border: 1px solid rgba(10, 130, 138, 1);
 border-radius: 4px;
 background: repeating-linear-gradient(-60deg, rgb(176, 214, 216) 0, rgb(176, 214, 216) 1px, transparent 1px, transparent 5px);  
+cursor: pointer;
 }
 
 .places__classes-blockedPlace-button {
@@ -482,6 +490,7 @@ height: 26px;
 box-sizing: border-box;
 border: 1px solid rgba(196, 196, 196, 1);
 border-radius: 4px;
+cursor: pointer;
 }
 
 .conf-step__hint {
@@ -581,4 +590,86 @@ cursor: pointer;
 .fieldset__send-button:hover   {
   transform: scale(1.05);
   transition: transform 0.15s ease;
+}
+
+@media (min-width: 641px) and (max-width: 1199px) {
+  .header__adminPanel,
+  .hallManagment,
+  .hallManagment__header,
+  .hallConfigure__header,
+  .hallConfigure{
+    width: 100%;
+  }
+
+.conf-step__hall {
+  width: 95%;
+}
+
+}
+
+@media (max-width:640px) {
+    .header__adminPanel,
+  .hallManagment,
+  .hallManagment__header,
+  .hallConfigure__header,
+  .hallConfigure,
+  .conf-step__hall {
+    width: 100%;
+  }
+
+.header__logos {
+  justify-content: center;
+  align-items: center;
+}
+
+.header__adminPanel {
+  padding: 0px;
+  justify-content: center;
+}
+
+.hallManagment__header {
+  padding: 0px 20px 0px 20px;
+}
+
+.hallConfiguration {
+  padding: 10px 20px 0px 20px;
+}
+
+  .hallConfigure__content_halls {
+    padding: 10px 20px 0px 20px;
+    flex-wrap: wrap;
+}
+
+.conf-step__hall-wrapper {
+  padding: 10px;
+}
+
+.places__classes {
+flex-wrap: wrap;
+}
+
+.hallConfigure__content_wapper {
+  padding: 20px 20px 0px 20px
+}
+
+.hallConfigure__header { 
+  padding: 0px 20px 0px 20px;
+}
+
+.hallManagment__content_hall {
+  padding: 0px 20px 0px 20px;
+} 
+
+.hallManagment__content_span{
+      padding: 35px 0px 12px 20px;
+}
+
+.hallConfigure__content_hall {
+  height: auto;
+}
+
+.conf-step__hall-rows {
+  gap: 2%;
+}
+
 }

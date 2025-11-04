@@ -5,7 +5,6 @@ background: rgb(231, 230, 230);
 }
 
 .configureFilms__addFilms {
-max-width: 816px;
 height: 57px;
 display: flex;
 padding: 42px 0px 50px 104px;
@@ -193,4 +192,46 @@ position: relative;
   height: 45px;
   width: 50px;
   background-color: #686666;
+}
+
+@media (min-width: 641px) and (max-width: 1199px) {
+  .configureFilms__header,
+  .configureFilms__main,
+  .configureFilms__content,
+  .configureFilms__addFilms{
+    width: 100%;
+  }
+}
+
+@media (max-width:640px) {
+  .configureFilms__header,
+  .configureFilms__main,
+  .configureFilms__content,
+  .configureFilms__addFilms{
+    width: 100%;
+  }
+
+  .configureFilms__header {
+    padding: 35px 20px 35px 20px;
+  }
+
+  .configureFilms__addFilms {
+        padding: 42px 0px 50px 20px;
+  }
+
+  .films-wrapper {
+        margin: 15px 0px 15px 20px;
+  }
+
+  .halls {
+        padding: 20px 42px 0px 20px;
+  }
+
+  .hallls-block-timeline {
+    margin: 0px 0px 35px 0px;
+  }
+
+  .halls-block-name {
+    padding-left: 0px;
+  }
 }

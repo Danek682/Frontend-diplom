@@ -195,3 +195,15 @@ text-align: center;
 text-transform: uppercase;
 color: rgb(112, 37, 24);
 }
+
+@media (max-width: 640px) {
+  .authForm,
+  .authForm__header,
+  .authForm__inputs {
+  width: 100%;
+  }
+
+  .authForm__inputs {
+    align-items: center;
+  }
+}
