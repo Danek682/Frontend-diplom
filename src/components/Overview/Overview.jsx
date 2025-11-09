@@ -5,9 +5,8 @@ import axios from 'axios'
 import moment from 'moment'
 import { format, addDays } from 'date-fns'
 import { ru } from 'date-fns/locale'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 export function OverView (props) {
-
     const today = new Date()
     const nextSevenDays = []
     const nextSevenDaysDayOfTheWeek = []
@@ -57,6 +56,7 @@ export function OverView (props) {
             props.setValueDate(dates[0].value)
         }
     },[props.valueDate,dates])
+
 
     return (
         <div className='app'>
@@ -117,10 +117,15 @@ export function OverView (props) {
                                     <div className='seances-box-seancesTimes'>
                                         {seances.sort((a,b)=> moment(a.seance_time, "HH:mm") - moment(b.seance_time, "HH:mm"))
                                         .map((seacne,index)=> {
+                                            const isToday = props.valueDate === dates[0].value
+                                            const now = new Date()
+                                            const timeNow = format(now, "HH:mm",{locale: ru})
+                                            const bunttonClass = seacne.seance_time < timeNow && isToday ? "seances-box-seanceTime-buttonNone" : "seances-box-seanceTime-button" 
+                                            const isDisabled = seacne.seance_time < timeNow && isToday ? true : false
                                             return ( 
                                                 <div key={index}>
                                                     <Link to={`/Frontend-diplom/film/${props.valueDate}`}>
-                                                    <button onClick={() => {
+                                                    <button disabled={isDisabled} onClick={() => {
                                                     console.log(seacne.id, String(props.valueDate))
                                                     props.setFilmName(films.film_name)
                                                     props.setSeanceStart(seacne.seance_time)
@@ -129,7 +134,7 @@ export function OverView (props) {
                                                     props.setStandartPrice(hall.hall_price_standart)
                                                     props.setVipPrice(hall.hall_price_vip)
                                                     getHallPlan(seacne.id, String(props.valueDate))
-                                                    }} className='seances-box-seanceTime-button'>{seacne.seance_time}</button> 
+                                                    }} className={bunttonClass}>{seacne.seance_time}</button> 
                                                     </Link>
                                                 </div>
                                              )
