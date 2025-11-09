@@ -5,6 +5,7 @@ import axios from 'axios'
 import moment from 'moment'
 import { format, addDays } from 'date-fns'
 import { ru } from 'date-fns/locale'
+import { useEffect } from 'react'
 export function OverView (props) {
 
     const today = new Date()
@@ -51,6 +52,12 @@ export function OverView (props) {
         })
     }
 
+    useEffect(()=>{
+        if (!props.valueDate) {
+            props.setValueDate(dates[0].value)
+        }
+    },[props.valueDate,dates])
+
     return (
         <div className='app'>
           <header className='header'>
@@ -66,8 +73,7 @@ export function OverView (props) {
           <nav className="nav">
         {dates.map((date,index)=> (
             <div className='nav-dates' key={index}>
-                {date.status === "holiday" ? 
-
+                {date.status === "holiday"?
                 <button className={`nav-dates-button--holiday ${props.valueDate === date.value ? "nav-dates-button--holiday-active" : "" }`} 
                 onClick={() => {
                 props.setValueDate(date.value)
