@@ -1,18 +1,38 @@
 
 import './Overview.css'
-import { Link } from "react-router-dom"
-import moment from "moment"
+import { Link } from "react-router-dom" 
 import axios from 'axios'
+import moment from 'moment'
+import { format, addDays } from 'date-fns'
+import { ru } from 'date-fns/locale'
 export function OverView (props) {
 
+    const today = new Date()
+    const nextSevenDays = []
+    const nextSevenDaysDayOfTheWeek = []
+    const nameNextSevenDaysDayOfTheWeek = []
+    for (let i = 0; i < 7; i++) {
+        const day = addDays(today,i);
+        nextSevenDays.push(format(day,"yyyy-MM-dd", {locale: ru}));
+        nextSevenDaysDayOfTheWeek.push(format(day,"dd, EEEEEE",{locale: ru}))
+        nameNextSevenDaysDayOfTheWeek.push(format(day,"EEEEEE",{locale: ru}))
+    }
+    function checkDay (date) {
+        if (date === "сб" || date === "вс") {
+            return "holiday"
+        } else {
+            return "weekday"
+        }
+    }
+
     const dates = [
-        {labelDate:"6, пн", value:"2025-10-06", status: "weekday"},
-        {labelDate:"7, вт", value:"2025-10-07", status: "weekday"},
-        {labelDate:"8, ср", value:"2025-10-08", status: "weekday"},
-        {labelDate:"9, чт", value:"2025-10-09", status: "weekday"},
-        {labelDate:"10, пт", value:"2025-10-10", status: "weekday"},
-        {labelDate:"11, сб", value:"2025-10-11", status: "holiday"},
-        {labelDate:"12, вс", value:"2025-10-12", status: "holiday"}
+        {labelDate:nextSevenDaysDayOfTheWeek[0] + " (Сегодня)", value:nextSevenDays[0], status: checkDay(nameNextSevenDaysDayOfTheWeek[0])},
+        {labelDate:nextSevenDaysDayOfTheWeek[1], value:nextSevenDays[1], status: checkDay(nameNextSevenDaysDayOfTheWeek[1])},
+        {labelDate:nextSevenDaysDayOfTheWeek[2], value:nextSevenDays[2], status: checkDay(nameNextSevenDaysDayOfTheWeek[2])},
+        {labelDate:nextSevenDaysDayOfTheWeek[3], value:nextSevenDays[3], status: checkDay(nameNextSevenDaysDayOfTheWeek[3])},
+        {labelDate:nextSevenDaysDayOfTheWeek[4], value:nextSevenDays[4], status: checkDay(nameNextSevenDaysDayOfTheWeek[4])},
+        {labelDate:nextSevenDaysDayOfTheWeek[5], value:nextSevenDays[5], status: checkDay(nameNextSevenDaysDayOfTheWeek[5])},
+        {labelDate:nextSevenDaysDayOfTheWeek[6], value:nextSevenDays[6], status: checkDay(nameNextSevenDaysDayOfTheWeek[6])}
     ]
     const activeDate = dates.find(d => d.value === props.valueDate)
 
