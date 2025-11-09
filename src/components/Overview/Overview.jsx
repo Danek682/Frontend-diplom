@@ -117,11 +117,18 @@ export function OverView (props) {
                                     <div className='seances-box-seancesTimes'>
                                         {seances.sort((a,b)=> moment(a.seance_time, "HH:mm") - moment(b.seance_time, "HH:mm"))
                                         .map((seacne,index)=> {
+<<<<<<< HEAD
                                             const isToday = props.valueDate === dates[0].value
                                             const now = new Date()
                                             const timeNow = format(now, "HH:mm",{locale: ru})
                                             const bunttonClass = seacne.seance_time < timeNow && isToday ? "seances-box-seanceTime-buttonNone" : "seances-box-seanceTime-button" 
                                             const isDisabled = seacne.seance_time < timeNow && isToday ? true : false
+=======
+                                            const now = new Date()
+                                            const timeNow = format(now, "HH:mm",{locale: ru})
+                                            const bunttonClass = seacne.seance_time < timeNow ? "seances-box-seanceTime-buttonNone" : "seances-box-seanceTime-button" 
+                                            const isDisabled = seacne.seance_time < timeNow ? true : false
+>>>>>>> b1ff157 (Сеансы, которые уже завепшились - неактивны)
                                             return ( 
                                                 <div key={index}>
                                                     <Link to={`/Frontend-diplom/film/${props.valueDate}`}>
