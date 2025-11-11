@@ -26,6 +26,12 @@ export function ConfigurePrice (props) {
         return value
     }
 
+    useEffect(()=>{
+        if(props.hall.length > 0 && !activeHall) {
+            setActiveHall(props.hall[0].id)
+        }
+    },[props.hall,activeHall])
+
     return (
         <div className="configurePrice__content">
             <div className="configurePrice__content-wrapper">

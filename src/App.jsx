@@ -29,16 +29,16 @@ function App() {
     const [initialHallPlan, setInitialHallPlan] = useState([]) // начальная конфигурация зала
     const [priceForTickets,setPriceForTickets] = useState(0) //общая цена за все билеты
     const [selectedSeats, setSelectedSeats] = useState([]) // Выбранные места
-    useEffect (()=> {
-      console.log(hallPlan);
-    },[hallPlan]) 
+    // useEffect (()=> {
+    //   console.log(hallPlan);
+    // },[hallPlan]) 
 
     // useEffect(()=> (
     //   console.log(priceForTickets)
     // ),[priceForTickets])
 
-    useEffect(()=>(console.log(selectedSeats)),[selectedSeats])
-    useEffect(()=> (console.log(priceForTickets)),[priceForTickets])
+    // useEffect(()=>(console.log(selectedSeats)),[selectedSeats])
+    // useEffect(()=> (console.log(priceForTickets)),[priceForTickets])
   return (
     <BrowserRouter>
        <Routes>

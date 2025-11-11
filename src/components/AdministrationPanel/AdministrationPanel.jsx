@@ -116,6 +116,12 @@ export function AdministrationPanel () {
     const [placeCount, setPlaceCount] = useState(""); //input с местами
     const [hallConfig, setHallConfig] = useState([]) //конфигурация зала
 
+    useEffect(()=>{
+        if(hall.length > 0 && !activeHall) {
+           setActiveHall(hall[0].id)
+        }
+    },[hall, activeHall])
+
     useEffect(()=> {
     if (activeHall) {
         axios.get("https://shfe-diplom.neto-server.ru/alldata").then(response => {

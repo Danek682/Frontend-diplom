@@ -8,7 +8,7 @@ export function OpenSales () {
     useEffect(()=> {
         axios.get("https://shfe-diplom.neto-server.ru/alldata").then(response=> {
             setResultHalls(response.data.result.halls)
-        })
+        }) 
     },[])
 
     function openSeance (hallid,hallOpen) {
@@ -24,16 +24,26 @@ export function OpenSales () {
             console.log(error)
         })
     }
+
+    useEffect(()=>{
+        if(activeHall === null && resultHalls !== null) {
+            setActiveHall(resultHalls[0].id)
+        }
+    },[activeHall,resultHalls])
+
     return (
         <div className="openSales__content"> 
         <span className="openSales__content-heading">Выбирите залл для открытия/закрытия продаж:</span>
         <div className="openSales__content-buttons">
             <div className="openSales__content-halls">
-                {resultHalls?.map((h,index)=> (
-                    <button  key={index} onClick={()=> {
+                {resultHalls?.map((h,index)=> {
+                    return (
+                        <button  key={index} onClick={()=> {
                         setActiveHall(h.id)
                     }} className={activeHall === h.id ? "openSales__content-halls-isActive" : "openSales__content-hall"}>{h.hall_name}</button>
-                ))}
+                )})
+                }
+                    
             </div>
         </div>
         <div className="isOpenSale">
@@ -59,3 +69,5 @@ export function OpenSales () {
         </div>
     )
 }
+
+//activeHall === h.id ? "openSales__content-halls-isActive" : "openSales__content-hall"
