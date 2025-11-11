@@ -1,4 +1,6 @@
+import closeIcon from "../../assets/close.png"
 import { useState } from "react"
+import { useNavigate } from "react-router"
 import "./HallAdd.css"
 import { Link } from "react-router"
 import axios from "axios"
@@ -7,6 +9,7 @@ const [hallName, sethallName] = useState("")
 const [className, setClassName] = useState("hallInput-span-nonActive")
 const [classHallIsActive, setClassHallIsActive] = useState("")
 const [value, setValue] = useState("")
+    const navigate = useNavigate();
 function onSubmit (e) {
     e.preventDefault();
     const target = e.target;
@@ -21,21 +24,21 @@ function onSubmit (e) {
         })
         .then(function(response) {
             console.log(response.data)
-            if(hallName) {
-                setClassName("hallInput-span-Active")
-                setValue(response.data.error)
-                setClassHallIsActive("error")
-                sethallName("")
-            }
-            if(!hallName) {
-                setClassName("hallInput-span-Active")
+
+            if (response.data.success === true) {
+                setTimeout(() => {(navigate("/Frontend-diplom/admin"))}, 1000);
+                setValue("Зал успешно добавлен!")
                 setClassHallIsActive("success")
-                sethallName("")
+                setClassName("hallInput-span-Active")
             }
             if(hallName === '') {
             setClassName("hallInput-span-Active")
             setValue(response.data.error)
             setClassHallIsActive("error")
+            setTimeout(()=> {
+                setClassHallIsActive("")
+                setClassName("hallInput-span-nonActive")
+            },1000)
             }
         }).catch(error => (
             console.log(error)
@@ -49,7 +52,7 @@ function onSubmit (e) {
                     <span className="hallAdd__header-span">Добавление зала</span>
                     <Link to="/Frontend-diplom/admin">
                         <button className="hallAdd__header-button">
-                            <img className="hallAdd__header-img" src="http://localhost:5173/Frontend-diplom/close.png" alt="Закрыть" />
+                            <img className="hallAdd__header-img" src={closeIcon} alt="Закрыть" />
                         </button>
                     </Link>
                 </header>
