@@ -33,7 +33,8 @@ export function ModalWindow (props) {
                         </div>
                         <form className="addFilm-form" onSubmit={(e)=> {
                             e.preventDefault()
-                            const target = e.target
+                            if (Number(filmDuration) >= 0) {
+                                const target = e.target
                             const formData = new FormData(target);
                             const entries = formData.entries();
                             const data = Object.fromEntries(entries);
@@ -51,6 +52,9 @@ export function ModalWindow (props) {
                                 if (response.data.success === false) {
                                     setSuccessClass("succesUpload");
                                     setSuccessValue(response.data.error)
+                                    setTimeout(() => {
+                                    setSuccessClass("succesUpload-default")
+                                }, 2500);
                                 }
                             }).catch (error => {
                                 console.log(error)
@@ -64,6 +68,12 @@ export function ModalWindow (props) {
                                 return
                             }
                             console.log(data);
+                            } else {
+                                setSuccessClass("succesUpload");
+                                setTimeout(() => {
+                                    setSuccessClass("succesUpload-default")
+                                }, 2500);
+                            }
                         }}>
                             <div className="addFilm-form-filmName">
                                 <label htmlFor="filmName" className="addFilm-form-filmName-labbel">Название фильма</label>
@@ -82,6 +92,7 @@ export function ModalWindow (props) {
                                 <input type="text" name="filmOrigin" id="filmOrigin" className="addFilm-form-filmOrigin-input" value={filmOrigin} onChange={(e) => {setFilmOrigin(e.target.value)}}/>
                             </div>
                             <span className={succesClass}>{successValue}</span>
+                            <span className={succesClass}>Введены некорректные данные</span>
                             <div className="addFilm-form-buttons">
                                 <button className="addFilm-form-buttonAddFilm">Добавить фильм</button>
                                 <label htmlFor="filePoster" className="addFilm-form-DowloadPoster-label"> {showFileName()}</label > 

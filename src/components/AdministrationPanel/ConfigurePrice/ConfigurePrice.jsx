@@ -5,7 +5,7 @@ export function ConfigurePrice (props) {
     const [activeHall, setActiveHall] = useState(null);
     const [priceStandart, setPriceStandart] = useState("");
     const [priceVip, setPriceVip] = useState("");
-
+    const [error, showError] = useState("hallInput-span-nonActive")
     useEffect (()=> {
       if(activeHall)  {
         axios.get("https://shfe-diplom.neto-server.ru/alldata").then(response => {
@@ -52,7 +52,8 @@ export function ConfigurePrice (props) {
                         <form className="configurePrice__form" key={index}
                         onSubmit={(e) => {
                             e.preventDefault();
-                            const target = e.target
+                            if(Number(priceStandart)!==0 && Number(priceVip) !== 0) {
+                             const target = e.target
                             const formData = new FormData(target);
                             const entries = formData.entries();
                             const data = Object.fromEntries(entries);
@@ -68,6 +69,11 @@ export function ConfigurePrice (props) {
                             )).catch(error => {
                             console.log(error)
                             })
+                            } else {
+                                console.log("Стоимость билетов должна быть > 0");
+                                showError("error");
+                                setTimeout(()=>{showError("hallInput-span-nonActive")},2500)
+                            }
                         }}
                         >
                             <span className="configurePrice__form-paragraph">Установите цены для типов кресел:</span>
@@ -94,6 +100,7 @@ export function ConfigurePrice (props) {
                                                 <span className="places__classes-vipPlace-span"> — VIP кресла</span>
                                             </div>
                                     </div>
+                                    <span className={error}>{"Стоимость билетов должна быть > 0"}</span>
                                 </div>
                             </div>
                             <div className="fieldset">

@@ -19,7 +19,7 @@ export function AdministrationPanel () {
     const [priceConfigureWindow, setPriceConfigureWindow ] = useState("configurePrice__main-default")// Блок с утановкой цен залов
     const [filmsConfigureWindow, setFilmsConfigureWindow] = useState("configureFilms__main-default")// блок с фильмами и сеансами 
     const [openSalesWindow, setOpenSalesWindow] = useState("openSales__main-default")
-
+    const [error,showError] = useState("hallInput-span-nonActive")
     function onClickHallManagment () {
         if (hallActive === "hallManagment__content_default") {
             setHallActive("hallManagment__content")
@@ -226,6 +226,7 @@ export function AdministrationPanel () {
                                     {activeHall === h.id ? 
                                     <form className="hallConfiguration__form" onSubmit={ (e)=> {
                                         e.preventDefault()
+                                        if (Number(rowCount) !== 0 && Number(placeCount) !== 0) {
                                         const target = e.target
                                         const formData = new FormData(target);
                                         const entries = formData.entries();
@@ -245,6 +246,10 @@ export function AdministrationPanel () {
                                         )).catch(error => {
                                             console.log(error)
                                         })
+                                        } else {
+                                            showError("error");
+                                            setTimeout(()=>{showError("hallInput-span-nonActive")},2500)
+                                        }
                                     }}> 
                                      <span className="hallConfiguration__conf-step__paragpaph">Укажите количество рядов и максимальное количество кресел в ряду:</span>
                                         <div className="hallConfiguration__inputs">
@@ -259,6 +264,7 @@ export function AdministrationPanel () {
                                             <input key={h.hall_places} type="text" name="hall_places" id="placesInput" className="hallConfiguration__form-places-input" value={placeCount} onChange={(e)=> {setPlaceCount(CheckValueInput(e.target.value))}}/>
                                         </div>
                                         </div>
+                                        <span className={error}>{"Количество рядов и количество мест должно быть > 0"}</span>
                                         <span className="conf-step__paragraph">Теперь вы можете указать типы кресел на схеме зала:</span>
                                         <div className="places__classes">
                                             <div className="places__classes-standartPlace">

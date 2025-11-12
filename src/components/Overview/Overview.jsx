@@ -26,7 +26,7 @@ export function OverView (props) {
     }
 
     const dates = [
-        {labelDate:nextSevenDaysDayOfTheWeek[0] + " (Сегодня)", value:nextSevenDays[0], status: checkDay(nameNextSevenDaysDayOfTheWeek[0])},
+        {labelDate:"Сегодня", value:nextSevenDays[0], status: checkDay(nameNextSevenDaysDayOfTheWeek[0])},
         {labelDate:nextSevenDaysDayOfTheWeek[1], value:nextSevenDays[1], status: checkDay(nameNextSevenDaysDayOfTheWeek[1])},
         {labelDate:nextSevenDaysDayOfTheWeek[2], value:nextSevenDays[2], status: checkDay(nameNextSevenDaysDayOfTheWeek[2])},
         {labelDate:nextSevenDaysDayOfTheWeek[3], value:nextSevenDays[3], status: checkDay(nameNextSevenDaysDayOfTheWeek[3])},
