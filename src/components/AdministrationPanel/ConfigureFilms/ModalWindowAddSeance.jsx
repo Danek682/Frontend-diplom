@@ -39,6 +39,7 @@ export function ModalWindowAddSeance (props) {
                                 if(response.data.success === true) {
                                     setError("success")
                                     setErrorValue("Сеанс успешно добавлен")
+                                    props.setModalVisible(false)
                                 }
                             }).catch(error => {
                                 console.log(error)

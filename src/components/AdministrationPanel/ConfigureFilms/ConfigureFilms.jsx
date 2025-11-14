@@ -31,19 +31,15 @@ export function ConfigureFilms () {
     }
 
     useEffect(()=> {
-        if (!visible || !modalVisible || !modalVisibleSeance) {
+        if (!visible && !modalVisible && !modalVisibleSeance) {
             axios.get("https://shfe-diplom.neto-server.ru/alldata").then(response => {
                 setFilms(response.data.result.films)
                 setResult(response.data.result)
+                console.log(response.data)
             })
         }
     },[visible, modalVisible, modalVisibleSeance])
 
-    useEffect(()=> {
-        axios.get("https://shfe-diplom.neto-server.ru/alldata").then(response => {
-            setResult(response.data.result)
-        })
-    },[])
     
     function handleDragStart (film) {
         setDraggedFilm(film); //перетаскиваемый фильм

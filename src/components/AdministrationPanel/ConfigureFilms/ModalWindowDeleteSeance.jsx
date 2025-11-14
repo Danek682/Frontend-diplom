@@ -11,6 +11,9 @@ const [errorValue, setErrorValue] = useState("")
             if(response.data.success === true) {
                 setError("success")
                 setErrorValue("Сеанс успешно удален!")
+                setTimeout(() => {
+                    props.setModalVisibleSeance(false)
+                }, 1000);
             }
             if(response.data.success === false) {
                 setError("error")

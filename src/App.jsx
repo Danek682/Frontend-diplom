@@ -10,14 +10,17 @@ import { Payment } from './components/confirmTickets/Payment';
 import { QrCode } from './components/QrCode/QrCode';
 import axios from "axios";
 function App() {
-   const [result, setResult] = useState(null)
   useEffect(()=>{
-        axios.get("https://shfe-diplom.neto-server.ru/alldata").then(response => {
-            console.log(response.data)
-            setResult(response.data.result)
-        }).catch(err => (console.log(err)))
-    },[]) 
-
+    axios.get("https://shfe-diplom.neto-server.ru/alldata").then(response => {
+      console.log(response.data)
+      setResult(response.data.result)
+      setHalls(response.data.result.halls)
+      setFilms(response.data.result.films)
+    }).catch(err => (console.log(err)))
+  },[])
+    const [films, setFilms] = useState([]); //список всех фильмов(box)
+    const [result, setResult] = useState(null) //ответ от сервера
+    const [hall, setHalls] = useState([]) //Залы
     const [valueDate, setValueDate] = useState(""); // Дата сеанса (пользователь)
     const [hallPlan, setHallPlan] = useState([]) //Получаемый план зала после нажатия на сеасн (пользователь)
     const [hallName, setHallName] = useState("") // Имя зала
@@ -103,7 +106,14 @@ function App() {
       <Route path='/Frontend-diplom/signin' element = {<Signin/>}>
       </Route>
 
-      <Route path='/Frontend-diplom/admin' element = {<AdministrationPanel/>}>
+      <Route path='/Frontend-diplom/admin' element = {<AdministrationPanel
+      hall = {hall}
+      setHalls = {setHalls}
+      films = {films}
+      setFilms = {setFilms}
+      result = {result}
+      setResult = {setResult}
+      />}>
       </Route>
 
       <Route path='/Frontend-diplom/admin/hallAdd' element = {<HallAdd/>}>

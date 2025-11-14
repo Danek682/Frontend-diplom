@@ -5,11 +5,9 @@ import axios from "axios";
 import { ConfigurePrice } from "../AdministrationPanel/ConfigurePrice/ConfigurePrice";
 import { ConfigureFilms } from "../AdministrationPanel/ConfigureFilms/ConfigureFilms";
 import { OpenSales } from "./OpenSales/OpenSales";
-// import 'animate.css';
 
-export function AdministrationPanel () {
+export function AdministrationPanel (props) {
     const [hallActive, setHallActive] = useState("hallManagment__content_default")  //выбранный зал
-    const [hall, setHalls] = useState([]) //Залы
     const [rowImagehallManagment, setRowImagehallManagment] = useState("arrow.png")//стрелка для переключения
     const [rowImageHallConfigure, setRowImageHallConfigure] = useState("arrow.png")
     const [rowImagePriceConfigure, setRowImagePriceConfigure] = useState("arrow.png") 
@@ -73,17 +71,11 @@ export function AdministrationPanel () {
         }
     } 
 
-    useEffect(()=> {
-        axios.get("https://shfe-diplom.neto-server.ru/alldata").then(response => {
-            setHalls(response.data.result.halls)
-        })
-    },[])
-  
     function deleteHall(hallId) {
         axios.delete(`https://shfe-diplom.neto-server.ru/hall/${hallId}`)
         .then(response => {
             console.log(response.data)
-            setHalls(response.data.result.halls)
+            props.setHalls(response.data.result.halls)
         }).catch(error => (
             console.log(error)
         ))
@@ -117,23 +109,21 @@ export function AdministrationPanel () {
     const [hallConfig, setHallConfig] = useState([]) //конфигурация зала
 
     useEffect(()=>{
-        if(hall.length > 0 && !activeHall) {
-           setActiveHall(hall[0].id)
+        if(props.hall.length > 0 && !activeHall) {
+           setActiveHall(props.hall[0].id)
         }
-    },[hall, activeHall])
+    },[props.hall, activeHall])
 
     useEffect(()=> {
     if (activeHall) {
-        axios.get("https://shfe-diplom.neto-server.ru/alldata").then(response => {
-            let selectedHall = response.data.result.halls.find((h)=> h.id === activeHall) 
+            let selectedHall = props.hall.find((h)=> h.id === activeHall) 
             if (selectedHall) {
                 setHallConfig(selectedHall.hall_config)
                 setRowCount(selectedHall.hall_rows)
                 setPlaceCount(selectedHall.hall_places)
             }
-        })
         }
-    },[activeHall, hall]) // отображение конфигурации зала
+    },[activeHall, props.hall]) // отображение конфигурации зала
 
   useEffect (()=> {
     if (!rowCount || !placeCount){
@@ -152,7 +142,6 @@ export function AdministrationPanel () {
         }
         setHallConfig(newHallMatrix)
   },[rowCount,placeCount]) //изменение конфигурации зала    
-
    function CheckValueInput (value) {
         if(!/^\d*\.?\d*$/.test(value)) {
             return ""
@@ -165,7 +154,12 @@ export function AdministrationPanel () {
         }
         return value
     } //Проверка значений input
-
+        let films = props.films
+        let setFilms = props.setFilms
+        let hall = props.hall
+        let setHalls = props.setHalls
+        let setResult = props.setResult
+        let result = props.result
     return (
         <div className="adminPanel">
             <header className="header__adminPanel">
@@ -188,7 +182,7 @@ export function AdministrationPanel () {
                             <div style={{minHeight: 0}}>
                                 <span className="hallManagment__content_span">Доступные залы:</span>
                             <div className="hallManagment__content_hall">
-                                {hall.map(h=> (
+                                {props.hall.map(h=> (
                                         <span className="hall" key={h.hall_name}>- {h.hall_name} 
                                         <button className="bashButton" onClick={() => {
                                             deleteHall(h.id) }}> 
@@ -213,7 +207,7 @@ export function AdministrationPanel () {
                         <span className="hallConfigure__content_span">Выберите зал для конфигурации:</span>
                     </div>
                     <div className="hallConfigure__content_halls">
-                            {hall.map((h,index)=> (
+                            {props.hall.map((h,index)=> (
                                 <button key={index} onClick={() => {setActiveHall(h.id)}}
                                 className={activeHall === h.id ? "hallConfigure__content_hall-isActive" : "hallConfigure__content_hall"}
                                  >{h.hall_name}</button>
@@ -221,7 +215,7 @@ export function AdministrationPanel () {
                     </div>
                     <div className="hallConfiguration">
                         <div className="hallConfiguration__hall">
-                            {hall.map((h)=> (
+                            {props.hall.map((h)=> (
                                 <div className="hallConfiguration__rows-seats" key={h.id}>
                                     {activeHall === h.id ? 
                                     <form className="hallConfiguration__form" onSubmit={ (e)=> {
@@ -241,6 +235,22 @@ export function AdministrationPanel () {
                                             },
                                         }).then((response => {
                                             console.log(response.data)
+                                            props.setHalls(prev => 
+                                                    prev.map((h) => 
+                                                       {
+                                                        return (
+                                                             h.id === activeHall 
+                                                        ? {
+                                                            ...h,
+                                                            hall_rows: Number(rowCount),
+                                                            hall_places: Number(placeCount),
+                                                            hall_config: hallConfig 
+                                                            }
+                                                        : h
+                                                        )
+                                                       }
+                                                    )
+                                                    )
                                         }
                                             
                                         )).catch(error => {
@@ -297,7 +307,7 @@ export function AdministrationPanel () {
                                                 setRowCount("")
                                                 setPlaceCount("")
                                             }} >Отмена</button>
-                                            <button className="fieldset__send-button" >Сохранить</button>
+                                            <button className="fieldset__send-button">Сохранить</button>
                                         </div>
                                     </form>
                                     
@@ -328,7 +338,13 @@ export function AdministrationPanel () {
                     </button>
                 </div>
                 <div className={filmsConfigureWindow}>
-                   <ConfigureFilms /> 
+                   {<ConfigureFilms
+                   setFilms = {setFilms}
+                   films = {films} 
+                   setResult = {setResult}
+                   result = {result}
+                   /> 
+                   }
                 </div>
                 
                 <div className="openSales__header">
@@ -339,7 +355,9 @@ export function AdministrationPanel () {
                 </div>
                  
                 <div className={openSalesWindow}>
-                        <OpenSales/>
+                        <OpenSales
+                    hall = {hall}
+                    setHalls = {setHalls}/>
                 </div>
 
                 </div>

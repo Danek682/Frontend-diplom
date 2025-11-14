@@ -1,15 +1,8 @@
 import { useEffect, useState } from "react"
 import "./OpenSales.css"
 import axios from "axios"
-export function OpenSales () {
-    const [resultHalls, setResultHalls] = useState(null)
+export function OpenSales (props) {
     const [activeHall, setActiveHall] = useState(null)
-
-    useEffect(()=> {
-        axios.get("https://shfe-diplom.neto-server.ru/alldata").then(response=> {
-            setResultHalls(response.data.result.halls)
-        }) 
-    },[])
 
     function openSeance (hallid,hallOpen) {
         axios.post(`https://shfe-diplom.neto-server.ru/open/${hallid}`, {
@@ -17,26 +10,37 @@ export function OpenSales () {
             hallOpen: Number(hallOpen)
         }).then(response=> {
             console.log(response.data)
-            axios.get("https://shfe-diplom.neto-server.ru/alldata").then(response=> {
-            setResultHalls(response.data.result.halls)
-        })
+            props.setHalls(prev => 
+                prev.map((h) => 
+                   {
+                      return (
+                           h.id === hallid 
+                        ? {
+                            ...h,
+                            hall_open: Number(hallOpen)
+                            }
+                        : h
+                    )
+                    }
+                )
+                 )
         }).catch(error => {
             console.log(error)
         })
     }
 
     useEffect(()=>{
-        if(activeHall === null && resultHalls !== null) {
-            setActiveHall(resultHalls[0].id)
+        if(activeHall === null && props.hall?.length > 0) {
+            setActiveHall(props.hall[0].id)
         }
-    },[activeHall,resultHalls])
+    },[activeHall,props.hall])
 
     return (
         <div className="openSales__content"> 
         <span className="openSales__content-heading">Выбирите залл для открытия/закрытия продаж:</span>
         <div className="openSales__content-buttons">
             <div className="openSales__content-halls">
-                {resultHalls?.map((h,index)=> {
+                {props.hall?.map((h,index)=> {
                     return (
                         <button  key={index} onClick={()=> {
                         setActiveHall(h.id)
@@ -47,7 +51,7 @@ export function OpenSales () {
             </div>
         </div>
         <div className="isOpenSale">
-           {resultHalls?.map((h,index)=> {
+           {props.hall?.map((h,index)=> {
             const status = h.hall_open === 1 ? "Этот зал уже открыт!" : "Все готово к открытию!"
            return  (<div className="setIsStatus-wrapper" key={index}>
                 {activeHall === h.id ?
@@ -70,4 +74,3 @@ export function OpenSales () {
     )
 }
 
-//activeHall === h.id ? "openSales__content-halls-isActive" : "openSales__content-hall"

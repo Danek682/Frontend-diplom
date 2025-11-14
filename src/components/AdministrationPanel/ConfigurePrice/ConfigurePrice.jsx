@@ -1,4 +1,4 @@
-import {  use, useEffect, useState } from "react";
+import {  act, use, useEffect, useState } from "react";
 import axios from "axios";
 import "./ConfigurePrice.css"
 export function ConfigurePrice (props) {
@@ -8,13 +8,11 @@ export function ConfigurePrice (props) {
     const [error, showError] = useState("hallInput-span-nonActive")
     useEffect (()=> {
       if(activeHall)  {
-        axios.get("https://shfe-diplom.neto-server.ru/alldata").then(response => {
-            let selectedHall = response.data.result.halls.find((h)=> h.id === activeHall);
+            let selectedHall = props.hall.find((h)=> h.id === activeHall);
             setPriceStandart(selectedHall.hall_price_standart);
             setPriceVip(selectedHall.hall_price_vip)
-        })
       }
-    },[activeHall])
+    },[activeHall,props.hall])
 
      function CheckValueInput (value) {
         if(!/^\d*\.?\d*$/.test(value)) {
@@ -65,7 +63,15 @@ export function ConfigurePrice (props) {
                                     'Content-Type': 'multipart/form-data',
                                 },
                             }).then((response => {
-                            console.log(response.data)}              
+                            console.log(response.data)
+                            props.setHalls(prev => prev.map((h)=> (
+                                h.id === activeHall ? {
+                                    ...h,
+                                    hall_price_standart:Number(priceStandart),
+                                    hall_price_vip:Number(priceVip)
+                                } : h
+                            )))
+                            }          
                             )).catch(error => {
                             console.log(error)
                             })

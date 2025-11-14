@@ -49,6 +49,9 @@ export function ModalWindow (props) {
                                 },
                             }).then((response) => {
                                 console.log(response.data)
+                                if (response.data.success === true) {
+                                    props.setVisible(false)
+                                }
                                 if (response.data.success === false) {
                                     setSuccessClass("succesUpload");
                                     setSuccessValue(response.data.error)
