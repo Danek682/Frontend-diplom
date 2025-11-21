@@ -152,15 +152,37 @@ export function ConfigureFilms () {
                                         const film = result.films?.find(film => film.id === seance.seance_filmid);
                                         const filmIsHall = film?.film_name
                                         const timeIsFilm  = seance?.seance_time;
+
+                                        const timeToPercent = (time) => {
+                                        const [hours, minutes] = time.split(':').map(Number);
+                                        const totalMinutes = hours * 60 + minutes;
+                                        const totalDayMinutes = 24 * 60;
+                                        return (totalMinutes / totalDayMinutes) * 100;
+                                        };
+
+                                        const calculateLeftPosition = (percent) => {
+                                        // Ограничиваем позицию, чтобы кнопка не выходила за пределы timeline
+                                        return Math.max(6.4, Math.min(93, percent))
+                                        };
+                                            return (
+                                        <div
+                                        className="hallls-block-timeline-film"
+                                        key={seanceIndex}
+                                        style={{
+                                            position: 'absolute',
+                                            left: `${calculateLeftPosition(timeToPercent(timeIsFilm))}%`,
+                                            transform: 'translateX(-50%)',
+                                        }}>
+                                        <button
+                                            className="hallls-block-timeline-filmName"
+                                            draggable
+                                            onDragStart={() => handleDragStartSeance(seance)}
+                                            onDragEnd={handleDragEndSeance}>
+                                            {filmIsHall}
+                                        </button>
+                                        <span className="hallls-block-timeline-time">{timeIsFilm}</span>
+                                        </div>
                                         
-                                        return (
-                                            <div className="hallls-block-timeline-film" key={seanceIndex} > 
-                                                <button className="hallls-block-timeline-filmName" draggable 
-                                                onDragStart={() => handleDragStartSeance(seance)}
-                                                onDragEnd={handleDragEndSeance}
-                                                > {filmIsHall} </button>
-                                                <span className="hallls-block-timeline-time">{timeIsFilm}</span>
-                                            </div>
                                         )
                                     })
                                     : "Нет сеансов"
