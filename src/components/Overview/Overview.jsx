@@ -89,6 +89,10 @@ export function OverView (props) {
             {activeDate ? 
                 <div className='seance-wrapper'>{
                     props.result?.films.map((films,index)=> {
+                        const filteredSeance = props.result.seances?.some(seance => seance.seance_filmid === films.id)
+                        if (!filteredSeance) {
+                           return null
+                        }
                         return (
                             <div className='seance-box' key={index}>
                             <div className='seance-box__info'>
@@ -142,7 +146,7 @@ export function OverView (props) {
                                         }
                                     </div>
                                 </div>
-                            )
+                            ) 
                            })}
 
                         </div>
