@@ -81,6 +81,26 @@ export function ConfigureFilms () {
         return time
     }
 
+      function timeToPercent(timeStr) {
+        if (!timeStr) return 0;
+        const [h, m] = timeStr.split(":").map(Number);
+        const total = (h || 0) * 60 + (m || 0);
+        const day = 24 * 60;
+        return (total / day) * 100; }
+
+    // длительность в мин -> ширина в процентах
+    function durationToPercent(durationMinutes) {
+    const dur = Number(durationMinutes) || 90; // запасная длительность
+    const day = 24 * 60;
+    return (dur / day) * 100;}
+                                            
+    function seanceNameLength(name,count) {
+        if ( name.length > count) {
+            return name.slice(0, count) + "..."
+        }
+        return name
+    }
+
     return (
         <div className="configureFilms__content">
             <div className="configureFilms__addFilms">
@@ -149,38 +169,38 @@ export function ConfigureFilms () {
                                 > {
                                     seances.length > 0 ? 
                                     seances.map((seance, seanceIndex)=> {
-                                        const film = result.films?.find(film => film.id === seance.seance_filmid);
-                                        const filmIsHall = film?.film_name
-                                        const timeIsFilm  = seance?.seance_time;
+                                            
+                                        const film = result.films?.find(f => f.id === seance.seance_filmid);
+                                        const filmName = film?.film_name || '';
+                                        const startPercent = timeToPercent(seance.seance_time);
+                                        const widthPercent = durationToPercent(film?.film_duration);
 
-                                        const timeToPercent = (time) => {
-                                        const [hours, minutes] = time.split(':').map(Number);
-                                        const totalMinutes = hours * 60 + minutes;
-                                        const totalDayMinutes = 24 * 60;
-                                        return (totalMinutes / totalDayMinutes) * 100;
-                                        };
-
-                                        const calculateLeftPosition = (percent) => {
-                                        // Ограничиваем позицию, чтобы кнопка не выходила за пределы timeline
-                                        return Math.max(6.4, Math.min(93, percent))
-                                        };
+                                        // если блок выходит за правый край — сдвинуть старт
+                                        let adjustedStart = startPercent;
+                                        if (adjustedStart + widthPercent > 105) {
+                                        adjustedStart = Math.max(0, 102 - widthPercent);
+                                        }
+                                        // немного отступов от краёв (опционально)
+                                        const leftClamped = Math.max(5, adjustedStart);
+                                        
                                             return (
                                         <div
-                                        className="hallls-block-timeline-film"
-                                        key={seanceIndex}
-                                        style={{
-                                            position: 'absolute',
-                                            left: `${calculateLeftPosition(timeToPercent(timeIsFilm))}%`,
-                                            transform: 'translateX(-50%)',
-                                        }}>
+                                            key={seanceIndex}
+                                            className="hallls-block-timeline-film"
+                                            style={{
+                                            left: `${leftClamped}%`,
+                                            width: `${widthPercent}%`,
+                                            position: 'absolute'
+                                            }}
+                                        >
                                         <button
                                             className="hallls-block-timeline-filmName"
                                             draggable
                                             onDragStart={() => handleDragStartSeance(seance)}
                                             onDragEnd={handleDragEndSeance}>
-                                            {filmIsHall}
+                                            {seanceNameLength(filmName,20)}
                                         </button>
-                                        <span className="hallls-block-timeline-time">{timeIsFilm}</span>
+                                        <span className="hallls-block-timeline-time">{seance.seance_time}</span>
                                         </div>
                                         
                                         )
