@@ -60,7 +60,7 @@ export function Signin () {
         <main className="content">
             <div className="authForm">
                 <div className="authForm__header">
-                    <span className="authorization">Авторизация</span>
+                    <span className="authorization">Авторизация1</span>
                 </div>
                 <form className="authForm__inputs" onSubmit={onSubmit}>
                     <div className="authForm__inputs_email">
