@@ -1,6 +1,6 @@
 import {  use, useEffect, useState } from "react"
 import {  Link } from "react-router-dom";
-import "./administrationPanel.css"
+import "./AdministrationPanel.css"
 import axios from "axios";
 import { ConfigurePrice } from "../AdministrationPanel/ConfigurePrice/ConfigurePrice";
 import { ConfigureFilms } from "../AdministrationPanel/ConfigureFilms/ConfigureFilms";
