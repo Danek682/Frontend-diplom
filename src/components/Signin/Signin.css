@@ -72,7 +72,7 @@ text-transform: uppercase;
 
 .authForm {
 width: 480px;
-height: 294px;
+height: 340px;
 display: flex;
 padding: 0px 0px 35px 0px;
 background: rgba(234, 233, 235, 0.95);
@@ -194,6 +194,11 @@ line-height: 16px;
 text-align: center;
 text-transform: uppercase;
 color: rgb(112, 37, 24);
+}
+
+.auth-data {
+  padding-top: 10px;
+  padding-left: 120px;
 }
 
 @media (max-width: 640px) {
