@@ -76,8 +76,9 @@ export function Signin () {
                         }}/>
                     </div>
                     <span className={`${nameClass} ${nameClassACtive}`}>{value}</span>
-                    <span className="auth-data"> Логин - shfe-diplom@netology.ru <br />
-Пароль - shfe-diplom </span>
+                    <span className="auth-data">
+                        Логин - shfe-diplom@netology.ru <br />
+                        Пароль - shfe-diplom </span>
                     <div className="send__button-container">
                         <button className="send__button">Авторизоваться</button>
                     </div>
